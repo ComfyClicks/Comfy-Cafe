@@ -1,0 +1,25 @@
+body {
+  background-color: rebeccapurple;
+}
+
+header {
+  display: flex;
+}
+
+.greeting {
+  font-size: 40px;
+  color: black;
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+header button {
+  justify-content: flex-end;
+}
+
+#content {
+  display: flex;
+  justify-content: center;
+}
+
