@@ -1,11 +1,16 @@
 import "./styles.css";
+import homePage from "./modules/home.js";
 import contactPage from './modules/contact.js';
 import createMenu from './modules/menu.js';
 
 console.log('Hello restaurant lover!');
 
-const header = document.getElementById('#content');
+const loadWebsite = () => {
+  const content = document.getElementById('content');
+  content.textContent = '';
+  const home = homePage();
+  console.log('Is this working?');
+  content.appendChild(home);
+}
 
-contactPage();
-createMenu();
-
+loadWebsite();
