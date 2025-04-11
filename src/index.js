@@ -7,6 +7,7 @@ console.log('Hello restaurant lover!');
 
 const loadWebsite = () => {
   const content = document.getElementById('content');
+  console.log(content);
   content.textContent = '';
   const home = homePage();
   console.log('Is this working?');

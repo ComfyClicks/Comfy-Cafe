@@ -1,3 +1,5 @@
+import { pastries, coffees } from './menuData.js';
+
 const homePage = () => {
   const homeContainer = document.createElement('div');
   homeContainer.classList.add('home-container');
@@ -13,7 +15,7 @@ const homePage = () => {
   heroContent.classList.add('hero-content');
   
   const heroHeading = document.createElement('h2');
-  heroHeading.textContent = 'Your Cozy Corner in the City';
+  heroHeading.textContent = 'Welcome to Comfy Cafe';
   
   const heroTagline = document.createElement('p');
   heroTagline.textContent = 'Where comfort meets flavor in every cup';
@@ -130,7 +132,7 @@ const homePage = () => {
     
     const itemImage = document.createElement('div');
     itemImage.classList.add('featured-item-image');
-    itemImage.setAttribute('data-image', item.image);
+    itemImage.setAttribute('item-image', item.image);
     
     const itemInfo = document.createElement('div');
     itemInfo.classList.add('featured-item-info');
