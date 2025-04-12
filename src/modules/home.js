@@ -17,11 +17,7 @@ const homePage = () => {
   const heroHeading = document.createElement('h2');
   heroHeading.textContent = 'Welcome to Comfy Cafe';
   
-  const heroTagline = document.createElement('p');
-  heroTagline.textContent = 'Where comfort meets flavor in every cup';
-  
   heroContent.appendChild(heroHeading);
-  heroContent.appendChild(heroTagline);
   heroSection.appendChild(heroImage);
   heroSection.appendChild(heroContent);
   
@@ -61,7 +57,7 @@ const homePage = () => {
       description: 'Freshly baked daily with organic ingredients'
     },
     {
-      icon: '📶',
+      icon: '🛜',
       title: 'Free Wi-Fi',
       description: 'Stay connected while you enjoy your coffee'
     },
@@ -139,6 +135,7 @@ const homePage = () => {
     
     const itemName = document.createElement('h4');
     itemName.textContent = item.name;
+    itemName.classList.add('featured-item-name');
     
     const itemDescription = document.createElement('p');
     itemDescription.textContent = item.description;
@@ -171,11 +168,11 @@ const homePage = () => {
   
   const testimonialText = document.createElement('p');
   testimonialText.classList.add('testimonial-text');
-  testimonialText.textContent = '"Comfy Cafe is my second home. The ambiance is perfect for working, the coffee is exceptional, and the staff makes you feel like family."';
+  testimonialText.textContent = 'Comfy Cafe is my second home. The ambiance is perfect for working, the coffee is exceptional, and the staff makes you feel like family.';
   
   const testimonialAuthor = document.createElement('p');
   testimonialAuthor.classList.add('testimonial-author');
-  testimonialAuthor.textContent = '— Sarah T., Regular Customer';
+  testimonialAuthor.textContent = '— Tupac';
   
   testimonialSection.appendChild(testimonialText);
   testimonialSection.appendChild(testimonialAuthor);
