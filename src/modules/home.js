@@ -100,35 +100,27 @@ const homePage = () => {
   
   const menuGrid = document.createElement('div');
   menuGrid.classList.add('featured-menu-grid');
-  
-  const featuredItems = [
-    {
-      name: 'Signature Latte',
-      image: 'latte.jpg',
-      description: 'Our house specialty with vanilla and caramel notes',
-      price: '$4.95'
-    },
-    {
-      name: 'Croissant',
-      image: 'croissant.jpg',
-      description: 'Sourdough bread with fresh avocado, salt, and red pepper flakes',
-      price: '$8.95'
-    },
-    {
-      name: 'Blueberry Scone',
-      image: 'scone.jpg',
-      description: 'Buttery, flaky pastry filled with fresh blueberries',
-      price: '$3.95'
-    }
-  ];
+
+  // Creates array for top six featured items
+  const createFeaturedArray = (arr1, arr2) => {
+    const topPastries = arr1.slice(0,3);
+    const topCoffees = arr2.slice(0,3);
+    const newArray = topPastries.concat(topCoffees);
+    return newArray;
+  } 
+
+  const featuredItems = createFeaturedArray(pastries, coffees);
+  console.log(featuredItems);
   
   featuredItems.forEach(item => {
     const menuItem = document.createElement('div');
     menuItem.classList.add('featured-menu-item');
     
-    const itemImage = document.createElement('div');
+    const itemImage = document.createElement('img');
+    console.log(itemImage);
+    itemImage.src = item.image;
+    itemImage.alt = item.name;
     itemImage.classList.add('featured-item-image');
-    itemImage.setAttribute('item-image', item.image);
     
     const itemInfo = document.createElement('div');
     itemInfo.classList.add('featured-item-info');
@@ -142,7 +134,7 @@ const homePage = () => {
     
     const itemPrice = document.createElement('p');
     itemPrice.classList.add('featured-item-price');
-    itemPrice.textContent = item.price;
+    itemPrice.textContent = `$${item.price.toFixed(2)}`;
     
     itemInfo.appendChild(itemName);
     itemInfo.appendChild(itemDescription);
@@ -172,7 +164,7 @@ const homePage = () => {
   
   const testimonialAuthor = document.createElement('p');
   testimonialAuthor.classList.add('testimonial-author');
-  testimonialAuthor.textContent = '— Tupac';
+  testimonialAuthor.textContent = '— Jerry Garcia';
   
   testimonialSection.appendChild(testimonialText);
   testimonialSection.appendChild(testimonialAuthor);

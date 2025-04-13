@@ -4,6 +4,7 @@
   --cream-highlight: rgba(245, 245, 220, 0.1);
   --body-text: #333;
   --body-bg: #f8f8f8;
+  --price-color: #2e7d32;
 }
 
 header {
@@ -203,7 +204,7 @@ body {
 
 .featured-menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin: 2rem 0;
 }
@@ -253,7 +254,7 @@ body {
 
 .featured-item-price {
   margin-top: auto !important;
-  color: #2e7d32 !important;
+  color: var(--price-color) !important;
   font-weight: 700;
   font-size: 1.2rem;
 }
