@@ -6,12 +6,28 @@
   --body-bg: #f8f8f8;
   --price-color: #2e7d32;
   --accent-color: #FF6F61;
+  --accent-hover: #FF7E5F;
+}
+
+body {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--body-text);
+  background-color: var(--body-bg);
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  overflow-x: hidden;
+  /* align-content: center;
+  justify-content: center; */
+  justify-items: center;
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100vw;
   background-color: var(--smokey-black);
   padding: 1rem 2rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -20,14 +36,16 @@ header {
 /* Header and Navigation styling */
 header h1 {
   color: var(--accent-color);
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   margin: 0;
   font-weight: 700;
+  padding-left: 1rem;
 }
 
 nav {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
+  padding-right: 4rem;
 }
 
 .nav-btns {
@@ -54,16 +72,6 @@ nav {
 .nav-btns.active {
   background-color: rgba(245, 245, 220, 0.2);
   border-bottom: 2px solid var(--accent-color);
-}
-
-body {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-  color: var(--body-text);
-  background-color: var(--body-bg);
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
 }
 
 #content {
@@ -98,6 +106,8 @@ body {
   position: relative;
   height: 620px;
   width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
   margin-bottom: 2rem;
   overflow: hidden;
 }
@@ -123,6 +133,7 @@ body {
   border-radius: 8px;
   width: 80%;
   max-width: 800px;
+  z-index: 2;
 }
 
 .hero-content h2 {
@@ -283,7 +294,7 @@ body {
 }
 
 .view-menu-btn:hover {
-  background-color: #FF7E5F;
+  background-color: var(--accent-hover);
 }
 
 /* Testimonial Section */
@@ -335,6 +346,9 @@ body {
   padding: 1rem;
   background-color: var(--smokey-black);
   color: var(--cream-white);
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
 }
 
 .hours-location-flex {
@@ -628,7 +642,7 @@ body {
 .directions-btn {
   display: inline-block;
   padding: 0.8rem 2rem;
-  background-color: var(--spring-coral);
+  background-color: var(--accent-color);
   color: white;
   text-decoration: none;
   border-radius: 4px;
@@ -637,7 +651,7 @@ body {
 }
 
 .directions-btn:hover {
-  background-color: #e65c4f;
+  background-color: var(--accent-hover);
   transform: translateY(-2px);
 }
 
