@@ -5,6 +5,7 @@
   --body-text: #333;
   --body-bg: #f8f8f8;
   --price-color: #2e7d32;
+  --accent-color: #FF6F61;
 }
 
 header {
@@ -18,7 +19,7 @@ header {
 
 /* Header and Navigation styling */
 header h1 {
-  color: var(--cream-white);
+  color: var(--accent-color);
   font-size: 2.5rem;
   margin: 0;
   font-weight: 700;
@@ -48,6 +49,11 @@ nav {
 
 .nav-btns:active {
   transform: translateY(0);
+}
+
+.nav-btns.active {
+  background-color: rgba(245, 245, 220, 0.2);
+  border-bottom: 2px solid var(--accent-color);
 }
 
 body {
@@ -265,7 +271,7 @@ body {
   width: 200px;
   margin: 5rem auto 0;
   padding: 0.8rem 1.5rem;
-  background-color: var(--smokey-black);
+  background-color: var(--accent-color);
   color: var(--cream-white);
   text-align: center;
   border: none;
@@ -277,7 +283,7 @@ body {
 }
 
 .view-menu-btn:hover {
-  background-color: #333;
+  background-color: #FF7E5F;
 }
 
 /* Testimonial Section */
@@ -395,15 +401,17 @@ body {
 /* Menu Styling */
 .menu-div {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  padding: 1rem;
+  padding: 1rem 10rem;
 }
 
 .menu-item {
   background-color: white;
   border-radius: 12px;
   overflow: hidden;
+  min-width: 300px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
@@ -420,41 +428,30 @@ body {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-bottom: 3px solid var(--smokey-black);
 }
 
 .item-name {
   color: var(--smokey-black);
-  margin: 0.75rem 0;
+  margin: 0.5rem 0;
   padding: 0 1rem;
   font-size: 1.6rem;
 }
 
 .price {
-  color: #e63946;
+  color: var(--price-color);
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1rem;
   margin: 0;
   padding: 0 1rem;
 }
 
 .item-calories {
   padding: 0 1rem;
-  margin: 0.5rem 0;
+  margin: 0;
   font-size: 0.9rem;
   color: #555;
   display: flex;
   align-items: center;
-}
-
-.item-calories:before {
-  content: "";
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  background-color: var(--smokey-black);
-  border-radius: 50%;
-  margin-right: 8px;
 }
 
 .item-description {
@@ -478,9 +475,8 @@ body {
 }
 
 .item-calories::before {
-  content: "Calories: ";
+  content: "Calories:\00a0";
   font-weight: 700;
-  margin-right: 4px;
 }
 
 /* Additional menu styling for sections */
@@ -490,13 +486,9 @@ body {
   gap: 3rem;
 }
 
-.menu-section {
-  margin-bottom: 2rem;
-}
-
 .section-heading {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   font-size: 2.5rem;
   color: var(--smokey-black);
   position: relative;
@@ -509,9 +501,9 @@ body {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
+  width: 170px;
   height: 3px;
-  background-color: var(--smokey-black);
+  background-color: var(--accent-color);
 }
 
 /* Responsive adjustments */

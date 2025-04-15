@@ -1,50 +1,50 @@
-import { pastries, coffees } from "./menuData.js";
+import { food, beverage } from "./menuData.js";
 
 const createMenu = () => {
   const menuContainer = document.createElement('div');
   menuContainer.classList.add('menu-container');
 
-  // Create pastries section
-  const pastriesSection = document.createElement('div');
-  pastriesSection.classList.add('menu-section');
+  // Create food section
+  const foodSection = document.createElement('div');
+  foodSection.classList.add('menu-section');
   
-  const pastriesHeading = document.createElement('h1');
-  pastriesHeading.textContent = 'Pastries';
-  pastriesHeading.classList.add('section-heading');
-  pastriesSection.appendChild(pastriesHeading);
+  const foodHeading = document.createElement('h1');
+  foodHeading.textContent = 'Food';
+  foodHeading.classList.add('section-heading');
+  foodSection.appendChild(foodHeading);
   
-  const pastriesDiv = document.createElement('div');
-  pastriesDiv.classList.add('menu-div');
+  const foodDiv = document.createElement('div');
+  foodDiv.classList.add('menu-div');
   
-  // Add pastry items
-  pastries.forEach(item => {
+  // Add food items
+  food.forEach(item => {
     const menuItem = createMenuItem(item);
-    pastriesDiv.appendChild(menuItem);
+    foodDiv.appendChild(menuItem);
   });
   
-  pastriesSection.appendChild(pastriesDiv);
-  menuContainer.appendChild(pastriesSection);
+  foodSection.appendChild(foodDiv);
+  menuContainer.appendChild(foodSection);
   
-  // Create coffee section
-  const coffeeSection = document.createElement('div');
-  coffeeSection.classList.add('menu-section');
+  // Create beverage section
+  const beverageSection = document.createElement('div');
+  beverageSection.classList.add('menu-section');
   
-  const coffeeHeading = document.createElement('h1');
-  coffeeHeading.textContent = 'Coffee';
-  coffeeHeading.classList.add('section-heading');
-  coffeeSection.appendChild(coffeeHeading);
+  const beverageHeading = document.createElement('h1');
+  beverageHeading.textContent = 'Beverages';
+  beverageHeading.classList.add('section-heading');
+  beverageSection.appendChild(beverageHeading);
   
-  const coffeeDiv = document.createElement('div');
-  coffeeDiv.classList.add('menu-div');
+  const beverageDiv = document.createElement('div');
+  beverageDiv.classList.add('menu-div');
   
-  // Add coffee items
-  coffees.forEach(item => {
+  // Add beverage items
+  beverage.forEach(item => {
     const menuItem = createMenuItem(item);
-    coffeeDiv.appendChild(menuItem);
+    beverageDiv.appendChild(menuItem);
   });
   
-  coffeeSection.appendChild(coffeeDiv);
-  menuContainer.appendChild(coffeeSection);
+  beverageSection.appendChild(beverageDiv);
+  menuContainer.appendChild(beverageSection);
 
   return menuContainer;
 };
@@ -67,13 +67,13 @@ const createMenuItem = (item) => {
   itemPrice.textContent = `$${item.price.toFixed(2)}`;
   itemPrice.classList.add('price');
 
-  const itemCalories = document.createElement('p');
-  itemCalories.textContent = item.calories;
-  itemCalories.classList.add('item-calories');
-
   const itemDescription = document.createElement('p');
   itemDescription.textContent = item.description;
   itemDescription.classList.add('item-description');
+
+  const itemCalories = document.createElement('p');
+  itemCalories.textContent = item.calories;
+  itemCalories.classList.add('item-calories');
 
   const itemIngredients = document.createElement('p');
   itemIngredients.textContent = item.ingredients.join(', ');
@@ -82,8 +82,8 @@ const createMenuItem = (item) => {
   menuItem.appendChild(itemPicture);
   menuItem.appendChild(itemName);
   menuItem.appendChild(itemPrice);
-  menuItem.appendChild(itemCalories);
   menuItem.appendChild(itemDescription);
+  menuItem.appendChild(itemCalories);
   menuItem.appendChild(itemIngredients);
 
   return menuItem;

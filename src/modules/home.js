@@ -1,4 +1,5 @@
-import { pastries, coffees } from './menuData.js';
+import { food, beverage } from './menuData.js';
+import createMenu from './menu.js'
 
 const homePage = () => {
   const homeContainer = document.createElement('div');
@@ -102,16 +103,10 @@ const homePage = () => {
   menuGrid.classList.add('featured-menu-grid');
 
   // Creates array for top six featured items
-  const createFeaturedArray = (arr1, arr2) => {
-    const topPastries = arr1.slice(0,3);
-    const topCoffees = arr2.slice(0,3);
-    const newArray = topPastries.concat(topCoffees);
-    return newArray;
-  } 
+  const featuredFood = [food[0], food[4], food[7]];
+  const featuredbeverage = [beverage[0], beverage[6], beverage[9]];
+  const featuredItems = [...featuredFood, ...featuredbeverage];
 
-  const featuredItems = createFeaturedArray(pastries, coffees);
-  console.log(featuredItems);
-  
   featuredItems.forEach(item => {
     const menuItem = document.createElement('div');
     menuItem.classList.add('featured-menu-item');
@@ -220,27 +215,16 @@ const homePage = () => {
   
   // Add event listeners for navigation
   viewMenuButton.addEventListener('click', () => {
-    // Clear the content container
     const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = '';
-    
-    // Import and call menu function
-    import('./menu.js').then(module => {
-      const createMenu = module.default;
-      contentDiv.appendChild(createMenu());
-    });
+    contentDiv.textContent = '';
+    const menu = createMenu();
+    contentDiv.appendChild(menu);
   });
   
   contactButton.addEventListener('click', () => {
     // Clear the content container
     const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = '';
-    
-    // Import and call contact function
-    import('./contact.js').then(module => {
-      const contactPage = module.default;
-      contentDiv.appendChild(contactPage());
-    });
+    contentDiv.textContent = '';
   });
   
   return homeContainer;

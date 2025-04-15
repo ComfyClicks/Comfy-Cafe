@@ -1,5 +1,5 @@
-// Pastry items array
-const pastries = [
+// Food array
+const food = [
   {
     id: 1,
     name: "Croissant",
@@ -7,7 +7,7 @@ const pastries = [
     calories: 340,
     description: "Buttery, flaky croissant with a golden exterior and soft, airy interior.",
     ingredients: ["Flour", "Butter", "Yeast", "Sugar", "Salt", "Milk"],
-    image: require("../assets/pastries/croissant.jpg")
+    image: require("../assets/food/croissant.jpg")
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const pastries = [
     calories: 360,
     description: "Chocolate-filled croissant with rich dark chocolate batons folded into buttery layers.",
     ingredients: ["Flour", "Butter", "Sugar", "Yeast", "Salt", "Dark Chocolate", "Milk", "Eggs"],
-    image: require("../assets/pastries/chocolate-croissant.jpg")
+    image: require("../assets/food/chocolate-croissant.jpg")
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const pastries = [
     calories: 310,
     description: "Moist muffin bursting with fresh blueberries and topped with streusel crumble.",
     ingredients: ["Flour", "Butter", "Sugar", "Eggs", "Milk", "Fresh Blueberries", "Baking Powder", "Salt", "Vanilla Extract"],
-    image: require("../assets/pastries/blueberry-muffin.jpg")
+    image: require("../assets/food/blueberry-muffin.jpg")
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ const pastries = [
     calories: 390,
     description: "Flaky pastry filled with sweet almond paste and topped with sliced almonds.",
     ingredients: ["Puff Pastry", "Almond Paste", "Butter", "Sliced Almonds", "Powdered Sugar", "Eggs", "Vanilla Extract"],
-    image: require("../assets/pastries/almond-danish.jpg")
+    image: require("../assets/food/almond-danish.jpg")
   },
   {
     id: 5,
@@ -43,7 +43,7 @@ const pastries = [
     calories: 420,
     description: "Swirled pastry with cinnamon sugar filling and cream cheese frosting.",
     ingredients: ["Flour", "Butter", "Sugar", "Cinnamon", "Yeast", "Cream Cheese", "Vanilla Extract", "Salt"],
-    image: require("../assets/pastries/cinnamon-roll.jpg")
+    image: require("../assets/food/cinnamon-roll.jpg")
   },
   {
     id: 6,
@@ -52,7 +52,7 @@ const pastries = [
     calories: 320,
     description: "Buttery shortbread crust filled with tangy lemon curd and dusted with powdered sugar.",
     ingredients: ["Flour", "Butter", "Sugar", "Eggs", "Lemons", "Cream", "Vanilla Extract", "Salt"],
-    image: require("../assets/pastries/lemon-tart.jpg")
+    image: require("../assets/food/lemon-tart.jpg")
   },
   {
     id: 7,
@@ -61,7 +61,7 @@ const pastries = [
     calories: 290,
     description: "Flaky, tender scone studded with fresh raspberries and finished with a light sugar glaze.",
     ingredients: ["Flour", "Butter", "Sugar", "Baking Powder", "Salt", "Heavy Cream", "Fresh Raspberries", "Vanilla Extract"],
-    image: require("../assets/pastries/raspberry-scone.jpg")
+    image: require("../assets/food/raspberry-scone.jpg")
   },
   {
     id: 8,
@@ -70,12 +70,84 @@ const pastries = [
     calories: 280,
     description: "Soft-baked cookie loaded with premium chocolate chips and a hint of vanilla.",
     ingredients: ["Flour", "Butter", "Brown Sugar", "White Sugar", "Eggs", "Vanilla Extract", "Chocolate Chips", "Baking Soda", "Salt"],
-    image: require("../assets/pastries/chocolate-chip-cookie.jpg")
+    image: require("../assets/food/chocolate-chip-cookie.jpg")
+  },
+  {
+    id: 9,
+    name: "Plain Bagel",
+    price: 2.50,
+    calories: 280,
+    description: "Classic hand-rolled bagel with a chewy interior and a slightly crisp exterior.",
+    ingredients: ["Flour", "Water", "Yeast", "Salt", "Malt Syrup"],
+    image: require("../assets/food/plain-bagel.jpg")
+  },
+  {
+    id: 10,
+    name: "Everything Bagel",
+    price: 2.75,
+    calories: 290,
+    description: "Savory bagel coated with a mixture of sesame seeds, poppy seeds, onion, garlic, and salt.",
+    ingredients: ["Flour", "Water", "Yeast", "Salt", "Malt Syrup", "Sesame Seeds", "Poppy Seeds", "Dried Garlic", "Dried Onion"],
+    image: require("../assets/food/everything-bagel.jpg")
+  },
+  {
+    id: 11,
+    name: "Poppy Seed Bagel",
+    price: 2.75,
+    calories: 285,
+    description: "Traditional bagel generously coated with crunchy poppy seeds.",
+    ingredients: ["Flour", "Water", "Yeast", "Salt", "Malt Syrup", "Poppy Seeds"],
+    image: require("../assets/food/poppy-seed-bagel.jpg")
+  },
+  {
+    id: 12,
+    name: "Strudel",
+    price: 4.50,
+    calories: 380,
+    description: "Flaky pastry filled with sweet apple and cinnamon, dusted with powdered sugar.",
+    ingredients: ["Filo Pastry", "Apples", "Cinnamon", "Sugar", "Butter", "Raisins", "Powdered Sugar", "Lemon Zest"],
+    image: require("../assets/food/strudel.jpg")
+  },
+  {
+    id: 13,
+    name: "Vanilla Cupcake",
+    price: 3.95,
+    calories: 310,
+    description: "Moist vanilla cupcake topped with creamy buttercream frosting and colorful sprinkles.",
+    ingredients: ["Flour", "Sugar", "Butter", "Eggs", "Milk", "Vanilla Extract", "Baking Powder", "Salt", "Buttercream", "Sprinkles"],
+    image: require("../assets/food/vanilla-cupcake.jpg")
+  },
+  {
+    id: 14,
+    name: "Eclair",
+    price: 4.75,
+    calories: 340,
+    description: "Light choux pastry filled with vanilla custard and topped with glossy chocolate glaze.",
+    ingredients: ["Flour", "Butter", "Eggs", "Water", "Salt", "Vanilla Custard", "Chocolate Glaze"],
+    image: require("../assets/food/eclair.jpg")
+  },
+  {
+    id: 15,
+    name: "Chocolate Eclair",
+    price: 4.95,
+    calories: 350,
+    description: "Choux pastry filled with chocolate pastry cream and glazed with rich chocolate ganache.",
+    ingredients: ["Flour", "Butter", "Eggs", "Water", "Salt", "Chocolate Pastry Cream", "Chocolate Ganache"],
+    image: require("../assets/food/chocolate-eclair.jpg")
+  },
+  {
+    id: 16,
+    name: "Cream Cheese Swirl",
+    price: 4.25,
+    calories: 320,
+    description: "Sweet pastry with spirals of cream cheese filling, baked until golden brown.",
+    ingredients: ["Flour", "Butter", "Sugar", "Cream Cheese", "Eggs", "Vanilla Extract", "Cinnamon", "Salt"],
+    image: require("../assets/food/cream-cheese-swirl.jpg")
   }
 ];
 
-// Coffee drinks array
-const coffees = [
+// Beverage array
+const beverage = [
   {
     id: 100,
     name: "House Blend Coffee",
@@ -83,7 +155,7 @@ const coffees = [
     calories: 5,
     description: "Our signature medium roast coffee with notes of chocolate and caramel.",
     ingredients: ["Arabica Coffee Beans", "Filtered Water"],
-    image: require("../assets/coffees/house-coffee.jpg")
+    image: require("../assets/beverage/house-coffee.jpg")
   },
   {
     id: 101,
@@ -92,7 +164,7 @@ const coffees = [
     calories: 120,
     description: "Espresso topped with equal parts steamed and frothed milk.",
     ingredients: ["Espresso", "Steamed Milk", "Milk Foam"],
-    image: require("../assets/coffees/cappucinno.jpg")
+    image: require("../assets/beverage/cappucinno.jpg")
   },
   {
     id: 102,
@@ -101,7 +173,7 @@ const coffees = [
     calories: 250,
     description: "Espresso with steamed milk and rich caramel syrup, topped with whipped cream.",
     ingredients: ["Espresso", "Steamed Milk", "Caramel Syrup", "Whipped Cream", "Caramel Drizzle"],
-    image: require("../assets/coffees/caramel-latte.jpg")
+    image: require("../assets/beverage/caramel-latte.jpg")
   },
   {
     id: 103,
@@ -110,7 +182,7 @@ const coffees = [
     calories: 10,
     description: "Espresso diluted with hot water, creating a coffee similar to drip coffee but with a different flavor profile.",
     ingredients: ["Espresso", "Hot Water"],
-    image: "/api/placeholder/300/200"
+    image: require("../assets/beverage/americano.jpg")
   },
   {
     id: 104,
@@ -119,7 +191,7 @@ const coffees = [
     calories: 290,
     description: "Espresso with steamed milk, chocolate syrup, and whipped cream.",
     ingredients: ["Espresso", "Steamed Milk", "Chocolate Syrup", "Whipped Cream", "Chocolate Shavings"],
-    image: "/api/placeholder/300/200"
+    image: require("../assets/beverage/mocha.jpg")
   },
   {
     id: 105,
@@ -128,7 +200,7 @@ const coffees = [
     calories: 15,
     description: "Coffee steeped in cold water for 24 hours, producing a smooth, less acidic brew.",
     ingredients: ["Coarsely Ground Coffee Beans", "Cold Filtered Water"],
-    image: "/api/placeholder/300/200"
+    image: require("../assets/beverage/cold-brew.jpg")
   },
   {
     id: 106,
@@ -137,7 +209,7 @@ const coffees = [
     calories: 170,
     description: "Ristretto shots of espresso with steamed milk and vanilla syrup, resulting in a velvety texture.",
     ingredients: ["Ristretto Espresso", "Steamed Milk", "Vanilla Syrup"],
-    image: "/api/placeholder/300/200"
+    image: require("../assets/beverage/vanilla-flat-white.jpg")
   },
   {
     id: 107,
@@ -146,8 +218,26 @@ const coffees = [
     calories: 240,
     description: "Black tea infused with cinnamon, cloves, and other warming spices, combined with steamed milk.",
     ingredients: ["Black Tea", "Cinnamon", "Cardamom", "Ginger", "Cloves", "Steamed Milk", "Honey"],
-    image: "/api/placeholder/300/200"
+    image: require("../assets/beverage/chai-latte.jpg")
+  },
+  {
+    id: 108,
+    name: "Espresso Shot",
+    price: 2.50,
+    calories: 5,
+    description: "Concentrated coffee served in a small cup, featuring a rich flavor and hazelnut-colored crema on top.",
+    ingredients: ["Finely Ground Espresso Beans", "Filtered Water"],
+    image: require("../assets/beverage/espresso.jpg")
+  },
+  {
+    id: 109,
+    name: "Hot Chocolate",
+    price: 4.95,
+    calories: 310,
+    description: "Rich and creamy hot chocolate topped with fluffy marshmallows and a sprinkle of cinnamon. Made with premium cocoa for a deeply satisfying chocolate experience.",
+    ingredients: ["Whole Milk", "Premium Cocoa Powder", "Dark Chocolate", "Vanilla Extract", "Marshmallows", "Ground Cinnamon", "Whipped Cream"],
+    image: require("../assets/beverage/hot-chocolate.jpg")
   }
 ];
 
-export { pastries, coffees };
+export { food, beverage };
