@@ -24,7 +24,7 @@ const contactPage = () => {
   addressIcon.textContent = '📍';
   
   const address = document.createElement('p');
-  address.innerHTML = '123 Comfy Street, Comfort Town<br>Just two blocks north of Central Park';
+  address.innerHTML = '123 Comfy Street<br>Paris, France 75008';
   
   addressDiv.appendChild(addressIcon);
   addressDiv.appendChild(address);
@@ -63,7 +63,7 @@ const contactPage = () => {
   hoursIcon.textContent = '🕒';
   
   const hours = document.createElement('p');
-  hours.innerHTML = 'Monday-Friday: 7am - 8pm<br>Saturday-Sunday: 8am - 9pm';
+  hours.innerHTML = 'Monday-Friday: 7am - 8pm<br>Saturday-Sunday: 7am - 9pm';
   
   hoursDiv.appendChild(hoursIcon);
   hoursDiv.appendChild(hours);
@@ -71,9 +71,9 @@ const contactPage = () => {
   const socialDiv = document.createElement('div');
   socialDiv.classList.add('social-links');
   
-  ['Facebook', 'Instagram', 'Twitter'].forEach(platform => {
+  ['Instagram', 'Twitter'].forEach(platform => {
     const socialLink = document.createElement('a');
-    socialLink.href = `https://${platform.toLowerCase()}.com/comfycafe`;
+    socialLink.href = `https://${platform.toLowerCase()}.com/comfyclicks`;
     socialLink.textContent = platform;
     socialLink.target = '_blank';
     socialLink.classList.add('social-link');
@@ -96,19 +96,19 @@ const contactPage = () => {
   
   const mapContainer = document.createElement('div');
   mapContainer.classList.add('map-container');
-  mapContainer.innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.0066351!3d40.7484405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9aeb1c6b5%3A0x35b1cfbc89a6097f!2sEmpire%20State%20Building%2C%20New%20York%2C%20NY%2010001!5e0!3m2!1sen!2sus!4v1620569822965!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>';
+  mapContainer.innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5106.841867971144!2d2.308114636116401!3d48.86671632379263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fc518637631%3A0x7c6b92d2c2465999!2zQ2hhbXBzLcOJbHlzw6llcywgUGFyaXMsIEZyYW5jZQ!5e0!3m2!1sen!2sus!4v1744957795273!5m2!1sen!2sus" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
   
   const mapInfo = document.createElement('div');
   mapInfo.classList.add('map-info');
   
   const directionsBtn = document.createElement('a');
-  directionsBtn.href = 'https://goo.gl/maps/1234';
+  directionsBtn.href = 'https://maps.app.goo.gl/viW1uyVZKDRN2d3Q8';
   directionsBtn.target = '_blank';
   directionsBtn.classList.add('directions-btn');
   directionsBtn.textContent = 'Get Directions';
   
   const parkingInfo = document.createElement('p');
-  parkingInfo.textContent = 'Street parking available. Bus stops nearby on Main Street and 5th Avenue.';
+  parkingInfo.textContent = 'Metro and bus stops nearby on Avenue des Champs-Élysées.';
   
   mapInfo.appendChild(directionsBtn);
   mapInfo.appendChild(parkingInfo);
@@ -212,7 +212,7 @@ const contactPage = () => {
     },
     {
       question: 'Is there outdoor seating?',
-      answer: 'We have a lovely patio area with 8 tables available on a first-come, first-served basis.'
+      answer: 'We have a lovely patio area with many tables available on a first-come, first-served basis.'
     },
     {
       question: 'Do you cater private events?',
@@ -220,7 +220,7 @@ const contactPage = () => {
     },
     {
       question: 'Are pets allowed?',
-      answer: 'Well-behaved pets are welcome on our outdoor patio area only.'
+      answer: 'Well-behaved pets are welcome!'
     }
   ];
   

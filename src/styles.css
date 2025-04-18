@@ -35,7 +35,7 @@ header {
 
 /* Header and Navigation styling */
 header h1 {
-  color: var(--accent-color);
+  color: var(--cream-white);
   font-size: 2.8rem;
   margin: 0;
   font-weight: 700;
@@ -243,10 +243,11 @@ nav {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.featured-img {
+.featured-item-image {
   width: 100%;
-  height: 200px;
+  height: 300px;
   object-fit: cover;
+  border-bottom: solid 2.5px var(--accent-color);
 }
 
 .featured-item-info {
@@ -283,18 +284,20 @@ nav {
   margin: 5rem auto 0;
   padding: 0.8rem 1.5rem;
   background-color: var(--accent-color);
-  color: var(--cream-white);
+  color: white;
   text-align: center;
   border: none;
   border-radius: 4px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .view-menu-btn:hover {
   background-color: var(--accent-hover);
+  transform: translateY(-2px);
+
 }
 
 /* Testimonial Section */
@@ -377,7 +380,7 @@ nav {
     grid-template-columns: repeat(2, 1fr);
   }
   
-  .featured-menu {
+  .featured-menu-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -387,7 +390,7 @@ nav {
     font-size: 2.5rem;
   }
   
-  .featured-menu {
+  .featured-menu-grid {
     grid-template-columns: 1fr;
   }
   
@@ -543,8 +546,7 @@ nav {
 
 .contact-container {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem 2rem;
 }
 
 /* Contact Information Section */
@@ -600,18 +602,19 @@ nav {
 }
 
 .social-link {
-  color: var(--smoky-black);
+  width: 85px;
+  color: white;
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   transition: all 0.3s ease;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: var(--accent-color);
 }
 
 .social-link:hover {
-  background-color: var(--spring-coral);
+  background-color: var(--accent-hover);
   color: white;
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 /* Map Section */
@@ -620,7 +623,7 @@ nav {
 }
 
 .map-container {
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -648,6 +651,7 @@ nav {
   border-radius: 4px;
   font-weight: 600;
   transition: all 0.3s ease;
+  margin-bottom: 2rem;
 }
 
 .directions-btn:hover {
@@ -710,7 +714,7 @@ nav {
   display: block;
   width: 100%;
   padding: 1rem;
-  background-color: var(--spring-coral);
+  background-color: var(--accent-color);
   color: white;
   border: none;
   border-radius: 4px;
@@ -722,7 +726,7 @@ nav {
 }
 
 .submit-btn:hover {
-  background-color: #e65c4f;
+  background-color: var(--accent-hover);
   transform: translateY(-2px);
 }
 
@@ -832,7 +836,7 @@ nav {
   }
   
   .map-container iframe {
-    height: 300px;
+    height: 400px;
   }
 }
 
@@ -843,7 +847,8 @@ nav {
   }
   
   .social-link {
-    width: 100%;
+    width: 85px;
+    align-self: center;
     text-align: center;
   }
   

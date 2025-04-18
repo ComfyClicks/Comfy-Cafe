@@ -103,7 +103,7 @@ const homePage = () => {
   menuGrid.classList.add('featured-menu-grid');
 
   // Creates array for top six featured items
-  const featuredFood = [food[0], food[4], food[7]];
+  const featuredFood = [food[0], food[5], food[7]];
   const featuredbeverage = [beverage[0], beverage[6], beverage[9]];
   const featuredItems = [...featuredFood, ...featuredbeverage];
 

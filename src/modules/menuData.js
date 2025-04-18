@@ -29,6 +29,15 @@ const food = [
   },
   {
     id: 4,
+    name: "Chocolate Chip Muffin",
+    price: 3.75,
+    calories: 340,
+    description: "Moist, tender muffin packed with chocolate chips and topped with a sprinkle of turbinado sugar for extra crunch.",
+    ingredients: ["Flour", "Butter", "Sugar", "Eggs", "Milk", "Vanilla Extract", "Baking Powder", "Salt", "Chocolate Chips", "Turbinado Sugar"],
+    image: require("../assets/food/chocolate-chip-muffin.jpg")
+  },
+  {
+    id: 5,
     name: "Almond Danish",
     price: 4.25,
     calories: 390,
@@ -37,7 +46,25 @@ const food = [
     image: require("../assets/food/almond-danish.jpg")
   },
   {
-    id: 5,
+    id: 6,
+    name: "Strudel",
+    price: 4.50,
+    calories: 380,
+    description: "Flaky pastry filled with sweet apple and cinnamon, dusted with powdered sugar.",
+    ingredients: ["Filo Pastry", "Apples", "Cinnamon", "Sugar", "Butter", "Raisins", "Powdered Sugar", "Lemon Zest"],
+    image: require("../assets/food/strudel.jpg")
+  },
+  {
+    id: 7,
+    name: "Cream Cheese Swirl",
+    price: 4.25,
+    calories: 320,
+    description: "Sweet pastry with spirals of cream cheese filling, baked until golden brown.",
+    ingredients: ["Flour", "Butter", "Sugar", "Cream Cheese", "Eggs", "Vanilla Extract", "Cinnamon", "Salt"],
+    image: require("../assets/food/cream-cheese-swirl.jpg")
+  },
+  {
+    id: 8,
     name: "Cinnamon Roll",
     price: 4.50,
     calories: 420,
@@ -45,17 +72,18 @@ const food = [
     ingredients: ["Flour", "Butter", "Sugar", "Cinnamon", "Yeast", "Cream Cheese", "Vanilla Extract", "Salt"],
     image: require("../assets/food/cinnamon-roll.jpg")
   },
+  
   {
-    id: 6,
-    name: "Lemon Tart",
-    price: 5.25,
+    id: 9,
+    name: "Blueberry Scone",
+    price: 3.95,
     calories: 320,
-    description: "Buttery shortbread crust filled with tangy lemon curd and dusted with powdered sugar.",
-    ingredients: ["Flour", "Butter", "Sugar", "Eggs", "Lemons", "Cream", "Vanilla Extract", "Salt"],
-    image: require("../assets/food/lemon-tart.jpg")
+    description: "Buttery, crumbly scone bursting with fresh blueberries and finished with a light vanilla glaze.",
+    ingredients: ["Flour", "Butter", "Sugar", "Baking Powder", "Salt", "Heavy Cream", "Fresh Blueberries", "Vanilla Extract", "Lemon Zest", "Vanilla Glaze"],
+    image: require("../assets/food/blueberry-scone.jpg")
   },
   {
-    id: 7,
+    id: 10,
     name: "Raspberry Scone",
     price: 3.75,
     calories: 290,
@@ -64,49 +92,22 @@ const food = [
     image: require("../assets/food/raspberry-scone.jpg")
   },
   {
-    id: 8,
+    id: 11,
+    name: "Eclair",
+    price: 4.75,
+    calories: 340,
+    description: "Light choux pastry filled with vanilla custard and topped with glossy chocolate glaze.",
+    ingredients: ["Flour", "Butter", "Eggs", "Water", "Salt", "Vanilla Custard", "Chocolate Glaze"],
+    image: require("../assets/food/eclair.jpg")
+  },
+  {
+    id: 12,
     name: "Chocolate Chip Cookie",
     price: 2.75,
     calories: 280,
     description: "Soft-baked cookie loaded with premium chocolate chips and a hint of vanilla.",
     ingredients: ["Flour", "Butter", "Brown Sugar", "White Sugar", "Eggs", "Vanilla Extract", "Chocolate Chips", "Baking Soda", "Salt"],
     image: require("../assets/food/chocolate-chip-cookie.jpg")
-  },
-  {
-    id: 9,
-    name: "Plain Bagel",
-    price: 2.50,
-    calories: 280,
-    description: "Classic hand-rolled bagel with a chewy interior and a slightly crisp exterior.",
-    ingredients: ["Flour", "Water", "Yeast", "Salt", "Malt Syrup"],
-    image: require("../assets/food/plain-bagel.jpg")
-  },
-  {
-    id: 10,
-    name: "Everything Bagel",
-    price: 2.75,
-    calories: 290,
-    description: "Savory bagel coated with a mixture of sesame seeds, poppy seeds, onion, garlic, and salt.",
-    ingredients: ["Flour", "Water", "Yeast", "Salt", "Malt Syrup", "Sesame Seeds", "Poppy Seeds", "Dried Garlic", "Dried Onion"],
-    image: require("../assets/food/everything-bagel.jpg")
-  },
-  {
-    id: 11,
-    name: "Poppy Seed Bagel",
-    price: 2.75,
-    calories: 285,
-    description: "Traditional bagel generously coated with crunchy poppy seeds.",
-    ingredients: ["Flour", "Water", "Yeast", "Salt", "Malt Syrup", "Poppy Seeds"],
-    image: require("../assets/food/poppy-seed-bagel.jpg")
-  },
-  {
-    id: 12,
-    name: "Strudel",
-    price: 4.50,
-    calories: 380,
-    description: "Flaky pastry filled with sweet apple and cinnamon, dusted with powdered sugar.",
-    ingredients: ["Filo Pastry", "Apples", "Cinnamon", "Sugar", "Butter", "Raisins", "Powdered Sugar", "Lemon Zest"],
-    image: require("../assets/food/strudel.jpg")
   },
   {
     id: 13,
@@ -119,30 +120,57 @@ const food = [
   },
   {
     id: 14,
-    name: "Eclair",
-    price: 4.75,
-    calories: 340,
-    description: "Light choux pastry filled with vanilla custard and topped with glossy chocolate glaze.",
-    ingredients: ["Flour", "Butter", "Eggs", "Water", "Salt", "Vanilla Custard", "Chocolate Glaze"],
-    image: require("../assets/food/eclair.jpg")
+    name: "Chocolate Cupcake",
+    price: 4.25,
+    calories: 380,
+    description: "Rich chocolate cupcake topped with smooth chocolate buttercream frosting and colorful rainbow sprinkles.",
+    ingredients: ["Flour", "Cocoa Powder", "Sugar", "Butter", "Eggs", "Milk", "Vanilla Extract", "Baking Powder", "Salt", "Chocolate Buttercream", "Rainbow Sprinkles"],
+    image: require("../assets/food/chocolate-cupcake.jpg")
   },
   {
     id: 15,
-    name: "Chocolate Eclair",
-    price: 4.95,
-    calories: 350,
-    description: "Choux pastry filled with chocolate pastry cream and glazed with rich chocolate ganache.",
-    ingredients: ["Flour", "Butter", "Eggs", "Water", "Salt", "Chocolate Pastry Cream", "Chocolate Ganache"],
-    image: require("../assets/food/chocolate-eclair.jpg")
+    name: "Almond Frangipane Tart",
+    price: 5.75,
+    calories: 410,
+    description: "Delicate shortcrust pastry filled with rich almond cream and topped with seasonal fruit and sliced almonds.",
+    ingredients: ["Flour", "Butter", "Sugar", "Eggs", "Ground Almonds", "Almond Extract", "Seasonal Fruit", "Sliced Almonds", "Apricot Glaze"],
+    image: require("../assets/food/almond-tart.jpg")
   },
   {
     id: 16,
-    name: "Cream Cheese Swirl",
-    price: 4.25,
+    name: "Lemon Tart",
+    price: 5.25,
     calories: 320,
-    description: "Sweet pastry with spirals of cream cheese filling, baked until golden brown.",
-    ingredients: ["Flour", "Butter", "Sugar", "Cream Cheese", "Eggs", "Vanilla Extract", "Cinnamon", "Salt"],
-    image: require("../assets/food/cream-cheese-swirl.jpg")
+    description: "Buttery shortbread crust filled with tangy lemon curd and dusted with powdered sugar.",
+    ingredients: ["Flour", "Butter", "Sugar", "Eggs", "Lemons", "Cream", "Vanilla Extract", "Salt"],
+    image: require("../assets/food/lemon-tart.jpg")
+  },
+  {
+    id: 17,
+    name: "Plain Bagel",
+    price: 2.50,
+    calories: 280,
+    description: "Classic hand-rolled bagel with a chewy interior and a slightly crisp exterior.",
+    ingredients: ["Flour", "Water", "Yeast", "Salt", "Malt Syrup"],
+    image: require("../assets/food/plain-bagel.jpg")
+  },
+  {
+    id: 18,
+    name: "Everything Bagel",
+    price: 2.75,
+    calories: 290,
+    description: "Savory bagel coated with a mixture of sesame seeds, poppy seeds, onion, garlic, and salt.",
+    ingredients: ["Flour", "Water", "Yeast", "Salt", "Malt Syrup", "Sesame Seeds", "Poppy Seeds", "Dried Garlic", "Dried Onion"],
+    image: require("../assets/food/everything-bagel.jpg")
+  },
+  {
+    id: 19,
+    name: "Poppy Seed Bagel",
+    price: 2.75,
+    calories: 285,
+    description: "Traditional bagel generously coated with crunchy poppy seeds.",
+    ingredients: ["Flour", "Water", "Yeast", "Salt", "Malt Syrup", "Poppy Seeds"],
+    image: require("../assets/food/poppy-seed-bagel.jpg")
   }
 ];
 
