@@ -1,64 +1,95 @@
 import { food, beverage } from "./menuData.js";
 
-const createMenu = () => {
+function createMenu() {
   const menuContainer = document.createElement('div');
   menuContainer.classList.add('menu-container');
-
-  // Create food section
-  const foodSection = document.createElement('div');
-  foodSection.classList.add('menu-section');
   
-  const foodHeading = document.createElement('h1');
-  foodHeading.textContent = 'Food';
-  foodHeading.classList.add('section-heading');
-  foodSection.appendChild(foodHeading);
-  
-  const foodDiv = document.createElement('div');
-  foodDiv.classList.add('menu-div');
-  
-  // Add food items
-  food.forEach(item => {
-    const menuItem = createMenuItem(item);
-    foodDiv.appendChild(menuItem);
-  });
-  
-  foodSection.appendChild(foodDiv);
+  const foodSection = createMenuSection('Food', food);
   menuContainer.appendChild(foodSection);
-  
-  // Create beverage section
-  const beverageSection = document.createElement('div');
-  beverageSection.classList.add('menu-section');
-  
-  const beverageHeading = document.createElement('h1');
-  beverageHeading.textContent = 'Beverages';
-  beverageHeading.classList.add('section-heading');
-  beverageSection.appendChild(beverageHeading);
-  
-  const beverageDiv = document.createElement('div');
-  beverageDiv.classList.add('menu-div');
-  
-  // Add beverage items
-  beverage.forEach(item => {
-    const menuItem = createMenuItem(item);
-    beverageDiv.appendChild(menuItem);
-  });
-  
-  beverageSection.appendChild(beverageDiv);
+
+  const beverageSection = createMenuSection('Beverages', beverage);
   menuContainer.appendChild(beverageSection);
+
+  // Check if we need to scroll to a specific item
+  setTimeout(() => {
+    const itemId = sessionStorage.getItem('scrollToItemId');
+    if (itemId) {
+      // Clear the storage so it only happens once
+      sessionStorage.removeItem('scrollToItemId');
+      
+      // Prevent any automatic scrolling to top
+      // This stops the default behavior that causes jerkiness
+      if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+      }
+      
+      // Find the item
+      const targetItem = document.querySelector(`[data-item-id="${itemId}"]`);
+      if (targetItem) {
+        // Disable any competing scroll events temporarily
+        document.body.style.overflow = 'hidden';
+        
+        // First wait for everything to fully render
+        setTimeout(() => {
+          // Add highlight effect in advance
+          targetItem.classList.add('highlight-item');
+          
+          // Scroll directly to the item in one smooth motion
+          targetItem.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+          });
+          
+          // Re-enable scrolling after animation completes
+          setTimeout(() => {
+            document.body.style.overflow = '';
+            
+            // Remove highlight after a delay
+            setTimeout(() => {
+              targetItem.classList.remove('highlight-item');
+            }, 1500);
+          }, 1000); // Allow time for scroll animation
+        }, 300); // Wait for page to stabilize
+      }
+    }
+  }, 100);
 
   return menuContainer;
 };
 
+function createMenuSection(title, array) {
+  // Create food section
+  const section = document.createElement('div');
+  section.classList.add('menu-section');
+  
+  const heading = document.createElement('h1');
+  heading.textContent = title;
+  heading.classList.add('section-heading');
+  section.appendChild(heading);
+  
+  const itemDiv = document.createElement('div');
+  itemDiv.classList.add('menu-div');
+  
+  // Add food items
+  array.forEach(item => {
+    const menuItem = createMenuItem(item);
+    itemDiv.appendChild(menuItem);
+  });
+  
+  section.appendChild(itemDiv);
+  return section;
+}
+
 // Helper function to create a menu item
-const createMenuItem = (item) => {
+function createMenuItem(item) {
   const menuItem = document.createElement('div');
   menuItem.classList.add('menu-item');
+
   // Make the whole card clickable
-  menuItem.setAttribute('data-item-id', item.id || item.name.replace(/\s+/g, '-').toLowerCase());
+  const itemId = item.id;
+  menuItem.dataset.itemId = itemId;
   menuItem.classList.add('clickable');
-  
-  // Add the pointer cursor and click effect via CSS
-  
+
   const itemPicture = document.createElement('img');
   itemPicture.src = item.image;
   itemPicture.alt = item.name;
@@ -99,7 +130,7 @@ const createMenuItem = (item) => {
   return menuItem;
 };
 
-// Add this function to your menu.js file
+// Function to create modal
 function showItemModal(item) {
   // Create modal container
   const modal = document.createElement('div');
@@ -153,28 +184,6 @@ function showItemModal(item) {
   modalIngredients.classList.add('modal-ingredients');
   modalIngredients.textContent = item.ingredients.join(', ');
   
-  // Add nutritional info section if available
-  if (item.nutritionalInfo) {
-    const nutritionSection = document.createElement('div');
-    nutritionSection.classList.add('nutrition-section');
-    
-    const nutritionHeading = document.createElement('h3');
-    nutritionHeading.textContent = 'Nutritional Information';
-    nutritionSection.appendChild(nutritionHeading);
-    
-    const nutritionList = document.createElement('ul');
-    nutritionList.classList.add('nutrition-list');
-    
-    for (const [key, value] of Object.entries(item.nutritionalInfo)) {
-      const listItem = document.createElement('li');
-      listItem.textContent = `${key}: ${value}`;
-      nutritionList.appendChild(listItem);
-    }
-    
-    nutritionSection.appendChild(nutritionList);
-    modalDetails.appendChild(nutritionSection);
-  }
-  
   // Append all elements to modal details
   modalDetails.appendChild(modalName);
   modalDetails.appendChild(modalPrice);
@@ -207,6 +216,5 @@ function showItemModal(item) {
     }
   });
 }
-
 
 export default createMenu;

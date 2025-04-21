@@ -112,6 +112,10 @@ const homePage = () => {
     const menuItem = document.createElement('div');
     menuItem.classList.add('featured-menu-item');
     
+    // Add data attributes for finding this item later
+    const itemId = item.id 
+    menuItem.dataset.itemId = itemId;
+
     const itemImage = document.createElement('img');
     console.log(itemImage);
     itemImage.src = item.image;
@@ -139,6 +143,11 @@ const homePage = () => {
     menuItem.appendChild(itemImage);
     menuItem.appendChild(itemInfo);
     
+    // Add click event listener to navigate to menu
+    menuItem.addEventListener('click', () => {
+      navigateToMenuItem(itemId);
+    });
+      
     menuGrid.appendChild(menuItem);
   });
   
@@ -150,6 +159,61 @@ const homePage = () => {
   menuSection.appendChild(menuGrid);
   menuSection.appendChild(viewMenuButton);
   
+// Function to navigate to menu and scroll to the item
+function navigateToMenuItem(itemId) {
+  
+  if (typeof loadMenu !== 'function') {
+    console.error('loadMenu function not found in global scope');
+    return;
+  }
+  
+  // Store the itemId in sessionStorage so it persists across page navigation
+  sessionStorage.setItem('scrollToItemId', itemId);
+  
+  // Navigate to menu page but SKIP the automatic scroll to top
+  if (typeof window.loadMenu === 'function') {
+    window.loadMenu(); // Pass true to skip scroll
+  }
+
+  // Navigate to menu page
+  window.loadMenu();
+  
+  // Wait for DOM to render
+  setTimeout(() => {
+    let targetSection = null;
+    
+    if (targetSection) {
+      // First scroll to the section heading
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+      
+      // Then wait a bit and scroll to the specific item
+      setTimeout(() => {
+        // Try to find the item by data-item-id
+        const targetItem = document.querySelector(`[data-item-id="${itemId}"]`);
+        
+        if (targetItem) {
+          // Add a highlight effect
+          targetItem.classList.add('highlight-item');
+          
+          // Scroll the item into view
+          targetItem.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+          });
+          
+          // Remove the highlight after a delay
+          setTimeout(() => {
+            targetItem.classList.remove('highlight-item');
+          }, 2000);
+        } else {
+          console.warn(`Menu item with ID ${itemId} not found`);
+        }
+      }, 500);
+    }
+  }, 300);
+}
+
+
   // Testimonial Section
   const testimonialSection = document.createElement('section');
   testimonialSection.classList.add('testimonial-section');

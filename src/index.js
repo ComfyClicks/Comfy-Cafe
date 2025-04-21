@@ -22,15 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // Helper function to simplify code and handle common page loading tasks
-function loadPage(pageFunction, navIndex) {
+function loadPage(pageFunction, navIndex, skipScroll = false) {
   const content = document.getElementById('content');
   content.textContent = '';
+  // Open page at top
+  window.scrollTo(0, 0);
+
   const page = pageFunction();
   content.appendChild(page);
   setActiveNav(navIndex);
-
-  // Scroll to the top of the page
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function loadHome() {
@@ -45,7 +45,7 @@ function loadContact() {
   loadPage(contactPage, 2);
 }
 
-// Creates visual highlight so users can see what page they're on
+// Creates nav bar highlight so users can see what page they're on
 function setActiveNav(index) {
   const navButtons = document.querySelectorAll('.nav-btns');
   navButtons.forEach((btn, i) => {
@@ -56,3 +56,7 @@ function setActiveNav(index) {
     }
   });
 }
+
+window.loadHome = loadHome;
+window.loadMenu = loadMenu;
+window.loadContact = loadContact;
