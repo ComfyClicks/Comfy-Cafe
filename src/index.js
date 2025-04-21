@@ -7,11 +7,13 @@ console.log('Hello restaurant lover!');
 
 document.addEventListener('DOMContentLoaded', () => {
   // Get navigation buttons
+  const headerBtn = document.querySelector('.header-h1');
   const homeBtn = document.querySelector('.nav-btns:nth-child(1)');
   const menuBtn = document.querySelector('.nav-btns:nth-child(2)');
   const contactBtn = document.querySelector('.nav-btns:nth-child(3)');
   
   // Add event listeners
+  headerBtn.addEventListener('click', loadHome);
   homeBtn.addEventListener('click', loadHome);
   menuBtn.addEventListener('click', loadMenu);
   contactBtn.addEventListener('click', loadContact);
@@ -19,28 +21,28 @@ document.addEventListener('DOMContentLoaded', () => {
   loadHome();
 })
 
-function loadHome() {
+// Helper function to simplify code and handle common page loading tasks
+function loadPage(pageFunction, navIndex) {
   const content = document.getElementById('content');
   content.textContent = '';
-  const home = homePage();
-  content.appendChild(home);
-  setActiveNav(0); // First button
+  const page = pageFunction();
+  content.appendChild(page);
+  setActiveNav(navIndex);
+
+  // Scroll to the top of the page
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function loadHome() {
+  loadPage(homePage, 0);
 }
 
 function loadMenu() {
-  const content = document.getElementById('content');
-  content.textContent = '';
-  const menu = createMenu();
-  content.appendChild(menu);
-  setActiveNav(1); // Second button
+  loadPage(createMenu, 1);
 }
 
 function loadContact() {
-  const content = document.getElementById('content');
-  content.textContent = '';
-  const contact = contactPage();
-  content.appendChild(contact);
-  setActiveNav(2); // Third button
+  loadPage(contactPage, 2);
 }
 
 // Creates visual highlight so users can see what page they're on

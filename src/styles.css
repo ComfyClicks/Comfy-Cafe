@@ -1,6 +1,6 @@
 :root {
   --smokey-black: rgb(18, 22, 23);
-  --cream-white: #f5f5dc;
+  --cream-white: #F9F5E7;
   --cream-highlight: rgba(245, 245, 220, 0.1);
   --body-text: #333;
   --body-bg: #f8f8f8;
@@ -40,6 +40,7 @@ header h1 {
   margin: 0;
   font-weight: 700;
   padding-left: 1rem;
+  cursor: pointer;
 }
 
 nav {
@@ -297,7 +298,6 @@ nav {
 .view-menu-btn:hover {
   background-color: var(--accent-hover);
   transform: translateY(-2px);
-
 }
 
 /* Testimonial Section */
@@ -347,11 +347,13 @@ nav {
   justify-content: space-around;
   align-items: center;
   padding: 1rem;
-  background-color: var(--smokey-black);
-  color: var(--cream-white);
+  background-color: var(--cream-white);
+  color: var(--smokey-black);
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
+  position: relative;
+  box-shadow: inset 0 3px 2px -3px rgba(0, 0, 0, 0.1), inset 0 -3px 2px -3px rgba(0, 0, 0, 0.1);
 }
 
 .hours-location-flex {
@@ -359,19 +361,21 @@ nav {
 }
 
 .contact-btn {
-  background-color: var(--cream-white);
-  color: var(--smokey-black);
+  background-color: var(--accent-color);
+  color: white;
   margin: 2rem 0 2.9rem 0;
   border: none;
   padding: 0.8rem 1.5rem;
   border-radius: 4px;
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  transition: opacity 0.3s;
+  transition: all 0.3s ease;
 }
 
 .contact-btn:hover {
-  opacity: 0.9;
+  transform: translateY(-2px);
+  background-color: var(--accent-hover);
 }
 
 /* Responsive adjustments */
@@ -542,6 +546,155 @@ nav {
   }
 }
 
+/* Clickable menu items */
+.clickable {
+  cursor: pointer;
+  position: relative;
+}
+
+.clickable:active {
+  transform: translateY(2px);
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  max-width: 900px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--smokey-black);
+  z-index: 10;
+}
+
+.close-modal:hover {
+  color: var(--accent-color);
+}
+
+.modal-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  border-right: 1px solid var(--accent-color);
+}
+
+.modal-details {
+  padding: 2rem;
+}
+
+.modal-name {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--smokey-black);
+}
+
+.modal-price {
+  font-size: 1.5rem;
+  color: var(--price-color);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.modal-description {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.modal-calories, .modal-ingredients {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.modal-calories::before {
+  content: "Calories:\00a0";
+  font-weight: 700;
+}
+
+.modal-ingredients::before {
+  content: "Ingredients:\00a0";
+  font-weight: 700;
+}
+
+.nutrition-section {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.nutrition-section h3 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.nutrition-list {
+  list-style: none;
+  padding: 0;
+  columns: 2;
+}
+
+.nutrition-list li {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .modal-content {
+    flex-direction: row;
+    max-height: 80vh;
+  }
+  
+  .modal-image {
+    width: 50%;
+    height: auto;
+    max-height: 100%;
+    border-radius: 8px 0 0 8px;
+    object-position: center;
+    border-bottom: 1px solid var(--accent-color);
+  }
+  
+  .modal-details {
+    width: 50%;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-image {
+    border-bottom: 1px solid var(--accent-color);
+  }
+}
+
 /* Contact Page Styling */
 
 .contact-container {
@@ -644,6 +797,7 @@ nav {
 
 .directions-btn {
   display: inline-block;
+  width: 190px;
   padding: 0.8rem 2rem;
   background-color: var(--accent-color);
   color: white;
@@ -661,8 +815,8 @@ nav {
 
 /* Contact Form Section */
 .contact-form-section {
-  margin-bottom: 4rem;
-  background-color: #f9f7f0;
+  margin: -1rem 0 4rem 0;
+  background-color: var(--cream-white);
   padding: 3rem;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -677,6 +831,7 @@ nav {
 .contact-form {
   max-width: 600px;
   margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .form-field {
@@ -707,12 +862,13 @@ nav {
 .form-field textarea:focus {
   border-color: var(--spring-coral);
   outline: none;
-  box-shadow: 0 0 0 2px rgba(255, 111, 97, 0.2);
+  box-shadow: 0 0 0 2px var(--accent-color);
 }
 
 .submit-btn {
   display: block;
-  width: 100%;
+  width: 240px;
+  margin: 2rem auto 1rem;
   padding: 1rem;
   background-color: var(--accent-color);
   color: white;
@@ -855,4 +1011,40 @@ nav {
   .contact-form-section {
     padding: 1.5rem;
   }
+}
+
+/* Footer Styling */
+footer {
+  display: flex;
+  background-color: var(--smokey-black);
+  color: var(--cream-white);
+  text-align: center;
+  align-items: center;
+  padding: .5rem;
+  margin-top: 4rem;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+footer a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+footer a:hover {
+  color: var(--accent-hover);
+  transform: translateY(-2px);
 }

@@ -71,7 +71,7 @@ const contactPage = () => {
   const socialDiv = document.createElement('div');
   socialDiv.classList.add('social-links');
   
-  ['Instagram', 'Twitter'].forEach(platform => {
+  ['Instagram', 'Github'].forEach(platform => {
     const socialLink = document.createElement('a');
     socialLink.href = `https://${platform.toLowerCase()}.com/comfyclicks`;
     socialLink.textContent = platform;
@@ -157,7 +157,7 @@ const contactPage = () => {
   subjectField.appendChild(subjectLabel);
   subjectField.appendChild(subjectSelect);
   
-  // Message textarea
+  // Message text area
   const messageField = document.createElement('div');
   messageField.classList.add('form-field');
   

@@ -1,5 +1,6 @@
 import { food, beverage } from './menuData.js';
 import createMenu from './menu.js'
+import contactPage from './contact.js';
 
 const homePage = () => {
   const homeContainer = document.createElement('div');
@@ -190,7 +191,9 @@ const homePage = () => {
   locationHeading.textContent = 'Location';
   
   const locationText = document.createElement('p');
-  locationText.textContent = '123 Cozy Street, Comfort Town';
+  locationText.textContent = '123 Comfy Street';
+  const locationTextCity = document.createElement('p');
+  locationTextCity.textContent = ' Paris, France 75008';
   
   const contactButton = document.createElement('button');
   contactButton.classList.add('contact-btn');
@@ -198,6 +201,7 @@ const homePage = () => {
   
   locationDiv.appendChild(locationHeading);
   locationDiv.appendChild(locationText);
+  locationDiv.appendChild(locationTextCity);
   locationDiv.appendChild(contactButton);
   
   hoursLocationFlex.appendChild(hoursDiv);
@@ -225,6 +229,11 @@ const homePage = () => {
     // Clear the content container
     const contentDiv = document.getElementById('content');
     contentDiv.textContent = '';
+    const contact = contactPage();
+    contentDiv.appendChild(contact);
+
+    // Scroll to the top of the page
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   });
   
   return homeContainer;
