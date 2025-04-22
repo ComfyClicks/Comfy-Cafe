@@ -168,7 +168,7 @@ nav {
 
 /* About Us Section */
 .about-section {
-  padding: .5rem 8rem;
+  padding: 1px 8rem;
   text-align: center;
   margin: auto;
   max-width: 700px;
@@ -181,7 +181,7 @@ nav {
 
 /* Features Section */
 .features-section {
-  padding: .5rem 8rem;
+  padding: 1px 8rem;
 }
 
 .features-grid {
@@ -194,7 +194,7 @@ nav {
 .feature-card {
   text-align: center;
   max-width: 350px;
-  min-width: 250px;
+  min-width: 190px;
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
@@ -581,6 +581,7 @@ nav {
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: hidden
 }
 
 .close-modal {
@@ -652,7 +653,6 @@ nav {
     width: 50%;
     height: auto;
     max-height: 100%;
-    border-radius: 8px 0 0 8px;
     object-position: center;
   }
   
@@ -691,20 +691,12 @@ nav {
 @media (max-width: 430px) {
   .modal {
     display: flex;
-    /* justify-content: center;
-    align-items: center;
-    align-content: center;
-    align-self: center;
-    justify-items: center;
-    justify-self: center; */
     width: 85%;
-    /* margin: 0; */
     padding: 0;
   }
 }
 
 /* Contact Page Styling */
-
 .contact-container {
   max-width: 1200px;
   padding: 2rem 2rem;
