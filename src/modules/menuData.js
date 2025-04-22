@@ -298,7 +298,7 @@ const beverage = [
     name: "Fresh Brewed Iced Tea",
     price: 3.50,
     calories: 5,
-    description: "Freshly brewed and chilled black tea served over ice with a slice of lemon. Optional sweetener available upon request.",
+    description: "Freshly brewed and chilled black tea served over ice. Optional sweetener and lemon available upon request.",
     ingredients: ["Premium Black Tea", "Filtered Water", "Ice", "Lemon Slice", "Optional Sweetener"],
     image: require("../assets/beverage/iced-tea.jpg")
   }

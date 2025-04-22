@@ -1,8 +1,6 @@
 import { food, beverage } from './menuData.js';
-import createMenu from './menu.js'
-import contactPage from './contact.js';
 
-const homePage = () => {
+function homePage() {
   const homeContainer = document.createElement('div');
   homeContainer.classList.add('home-container');
   
@@ -117,7 +115,6 @@ const homePage = () => {
     menuItem.dataset.itemId = itemId;
 
     const itemImage = document.createElement('img');
-    console.log(itemImage);
     itemImage.src = item.image;
     itemImage.alt = item.name;
     itemImage.classList.add('featured-item-image');
@@ -161,58 +158,18 @@ const homePage = () => {
   
 // Function to navigate to menu and scroll to the item
 function navigateToMenuItem(itemId) {
-  
-  if (typeof loadMenu !== 'function') {
-    console.error('loadMenu function not found in global scope');
+  // Check if loadMenu exists
+  if (typeof window.loadMenu !== 'function') {
+    console.error('loadMenu function not found on window object');
     return;
   }
   
   // Store the itemId in sessionStorage so it persists across page navigation
   sessionStorage.setItem('scrollToItemId', itemId);
   
-  // Navigate to menu page but SKIP the automatic scroll to top
-  if (typeof window.loadMenu === 'function') {
-    window.loadMenu(); // Pass true to skip scroll
-  }
-
-  // Navigate to menu page
-  window.loadMenu();
-  
-  // Wait for DOM to render
-  setTimeout(() => {
-    let targetSection = null;
-    
-    if (targetSection) {
-      // First scroll to the section heading
-      targetSection.scrollIntoView({ behavior: 'smooth' });
-      
-      // Then wait a bit and scroll to the specific item
-      setTimeout(() => {
-        // Try to find the item by data-item-id
-        const targetItem = document.querySelector(`[data-item-id="${itemId}"]`);
-        
-        if (targetItem) {
-          // Add a highlight effect
-          targetItem.classList.add('highlight-item');
-          
-          // Scroll the item into view
-          targetItem.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'center' 
-          });
-          
-          // Remove the highlight after a delay
-          setTimeout(() => {
-            targetItem.classList.remove('highlight-item');
-          }, 2000);
-        } else {
-          console.warn(`Menu item with ID ${itemId} not found`);
-        }
-      }, 500);
-    }
-  }, 300);
+  // Navigate to menu page (only once)
+  window.loadMenu(true); // Pass true to skip automatic scroll
 }
-
 
   // Testimonial Section
   const testimonialSection = document.createElement('section');
@@ -281,25 +238,15 @@ function navigateToMenuItem(itemId) {
   homeContainer.appendChild(testimonialSection);
   homeContainer.appendChild(hoursLocationSection);
   
-  // Add event listeners for navigation
+  // Add event listeners for buttons using global functions
   viewMenuButton.addEventListener('click', () => {
-    const contentDiv = document.getElementById('content');
-    contentDiv.textContent = '';
-    const menu = createMenu();
-    contentDiv.appendChild(menu);
+    window.loadMenu();
   });
   
   contactButton.addEventListener('click', () => {
-    // Clear the content container
-    const contentDiv = document.getElementById('content');
-    contentDiv.textContent = '';
-    const contact = contactPage();
-    contentDiv.appendChild(contact);
-
-    // Scroll to the top of the page
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.loadContact();
   });
-  
+
   return homeContainer;
 };
 

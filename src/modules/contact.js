@@ -1,4 +1,4 @@
-const contactPage = () => {
+function contactPage() {
   const contactContainer = document.createElement('div');
   contactContainer.classList.add('contact-container');
   
