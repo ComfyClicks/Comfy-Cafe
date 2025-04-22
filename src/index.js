@@ -21,7 +21,58 @@ document.addEventListener('DOMContentLoaded', () => {
   loadHome();
 })
 
-// Helper function to simplify code and handle common page loading tasks
+// Setup mobile navigation
+function setupMobileNav() {
+  const hamburger = document.querySelector('.hamburger-menu');
+  const nav = document.querySelector('nav');
+  let overlay;
+  
+  // Create overlay div if it doesn't exist
+  if (!document.querySelector('.mobile-overlay')) {
+    overlay = document.createElement('div');
+    overlay.classList.add('mobile-overlay');
+    document.body.appendChild(overlay);
+  } else {
+    overlay = document.querySelector('.mobile-overlay');
+  }
+  
+  // Toggle menu function
+  function toggleMenu() {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('active');
+    overlay.classList.toggle('active');
+    
+    // Prevent scrolling when menu is open
+    document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+  }
+  
+  // Event listeners
+  hamburger.addEventListener('click', toggleMenu);
+  
+  // Close menu when clicking overlay
+  overlay.addEventListener('click', toggleMenu);
+  
+  // Close menu when clicking a nav button
+  const navButtons = document.querySelectorAll('.nav-btns');
+  navButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      if (nav.classList.contains('active')) {
+        toggleMenu();
+      }
+    });
+  });
+  
+  // Close menu on window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && nav.classList.contains('active')) {
+      toggleMenu();
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', setupMobileNav);
+
+// Helper function to handle common page loading tasks
 function loadPage(pageFunction, navIndex, skipScroll = false) {
   const content = document.getElementById('content');
   content.textContent = '';

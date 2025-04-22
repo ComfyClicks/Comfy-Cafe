@@ -93,6 +93,15 @@ const food = [
   },
   {
     id: 11,
+    name: "Chocolate Chip Scone",
+    price: 3.95,
+    calories: 350,
+    description: "Buttery, crumbly scone loaded with rich chocolate chips and finished with a light sugar glaze.",
+    ingredients: ["Flour", "Butter", "Sugar", "Baking Powder", "Salt", "Heavy Cream", "Chocolate Chips", "Vanilla Extract", "Sugar Glaze"],
+    image: require("../assets/food/chocolate-chip-scone.jpg")
+  },
+  {
+    id: 12,
     name: "Eclair",
     price: 4.75,
     calories: 340,
@@ -101,7 +110,7 @@ const food = [
     image: require("../assets/food/eclair.jpg")
   },
   {
-    id: 12,
+    id: 13,
     name: "Chocolate Chip Cookie",
     price: 2.75,
     calories: 280,
@@ -110,7 +119,16 @@ const food = [
     image: require("../assets/food/chocolate-chip-cookie.jpg")
   },
   {
-    id: 13,
+    id: 14,
+    name: "Double Chocolate Chip Cookie",
+    price: 3.25,
+    calories: 320,
+    description: "Rich chocolate cookie loaded with both milk and dark chocolate chips for an indulgent chocolate experience.",
+    ingredients: ["Flour", "Butter", "Sugar", "Brown Sugar", "Eggs", "Cocoa Powder", "Milk Chocolate Chips", "Dark Chocolate Chips", "Vanilla Extract", "Baking Soda", "Salt"],
+    image: require("../assets/food/double-chocolate-chip.jpg")
+  },
+  {
+    id: 15,
     name: "Vanilla Cupcake",
     price: 3.95,
     calories: 310,
@@ -119,7 +137,7 @@ const food = [
     image: require("../assets/food/vanilla-cupcake.jpg")
   },
   {
-    id: 14,
+    id: 16,
     name: "Chocolate Cupcake",
     price: 4.25,
     calories: 380,
@@ -128,7 +146,7 @@ const food = [
     image: require("../assets/food/chocolate-cupcake.jpg")
   },
   {
-    id: 15,
+    id: 17,
     name: "Almond Frangipane Tart",
     price: 5.75,
     calories: 410,
@@ -137,7 +155,7 @@ const food = [
     image: require("../assets/food/almond-tart.jpg")
   },
   {
-    id: 16,
+    id: 18,
     name: "Lemon Tart",
     price: 5.25,
     calories: 320,
@@ -146,7 +164,7 @@ const food = [
     image: require("../assets/food/lemon-tart.jpg")
   },
   {
-    id: 17,
+    id: 19,
     name: "Plain Bagel",
     price: 2.50,
     calories: 280,
@@ -155,7 +173,7 @@ const food = [
     image: require("../assets/food/plain-bagel.jpg")
   },
   {
-    id: 18,
+    id: 20,
     name: "Everything Bagel",
     price: 2.75,
     calories: 290,
@@ -164,7 +182,7 @@ const food = [
     image: require("../assets/food/everything-bagel.jpg")
   },
   {
-    id: 19,
+    id: 21,
     name: "Poppy Seed Bagel",
     price: 2.75,
     calories: 285,
@@ -265,6 +283,24 @@ const beverage = [
     description: "Rich and creamy hot chocolate topped with fluffy marshmallows and a sprinkle of cinnamon. Made with premium cocoa for a deeply satisfying chocolate experience.",
     ingredients: ["Whole Milk", "Premium Cocoa Powder", "Dark Chocolate", "Vanilla Extract", "Marshmallows", "Ground Cinnamon", "Whipped Cream"],
     image: require("../assets/beverage/hot-chocolate.jpg")
+  },
+  {
+    id: 110,
+    name: "Organic Hot Tea",
+    price: 3.25,
+    calories: 0,
+    description: "Your choice of organic loose leaf tea, steeped to perfection and served with a touch of honey on the side.",
+    ingredients: ["Organic Loose Leaf Tea", "Filtered Water", "Honey (optional)"],
+    image: require("../assets/beverage/hot-tea.jpg")
+  },
+  {
+    id: 111,
+    name: "Fresh Brewed Iced Tea",
+    price: 3.50,
+    calories: 5,
+    description: "Freshly brewed and chilled black tea served over ice with a slice of lemon. Optional sweetener available upon request.",
+    ingredients: ["Premium Black Tea", "Filtered Water", "Ice", "Lemon Slice", "Optional Sweetener"],
+    image: require("../assets/beverage/iced-tea.jpg")
   }
 ];
 
