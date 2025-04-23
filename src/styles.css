@@ -362,7 +362,7 @@ nav {
 
 .featured-menu-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 12px 0px rgba(255, 111, 97, 0.8);
   cursor: pointer;
 }
 
@@ -559,7 +559,7 @@ nav {
 
 .menu-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 20px 5px rgba(255, 111, 97, 0.8);
+  box-shadow: 0 0 12px 0px rgba(255, 111, 97, 0.8);
 }
 
 .item-picture {
@@ -648,7 +648,7 @@ nav {
 
 /* Highlight effect for menu items clicked on from homepage */
 .highlight-item {
-  animation: highlight-pulse 3.5s ease-out forwards;
+  animation: highlight-pulse 4.5s ease-out forwards;
   box-shadow: 0 0 15px 3px var(--accent-color);
   position: relative;
   z-index: 10;

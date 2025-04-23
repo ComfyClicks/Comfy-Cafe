@@ -91,7 +91,7 @@ function scrollToHighlightedItem() {
     // Remove highlight after animation completes (matches CSS animation duration)
     setTimeout(() => {
       targetItem.classList.remove('highlight-item');
-    }, 2000);
+    }, 4500);
   });
 }
 
@@ -210,8 +210,10 @@ function setupModalKeyboardNavigation(modal, allItems) {
 
 // Navigate to the previous item in the list (with wraparound)
 function navigatePrevious(modal, allItems) {
-  const currentItemId = modal.dataset.currentItemId;
-  const currentIndex = allItems.findIndex(i => i.id === currentItemId);
+  const currentItemIdString = modal.dataset.currentItemId;
+  // Convert the string ID from the dataset to a number
+  const currentItemIdNumber = parseInt(currentItemIdString, 10); 
+  const currentIndex = allItems.findIndex(i => i.id === currentItemIdNumber);
   // Calculate previous index with wraparound
   const prevIndex = (currentIndex - 1 + allItems.length) % allItems.length;
   navigateToItem(modal, allItems[prevIndex]);
@@ -219,8 +221,9 @@ function navigatePrevious(modal, allItems) {
 
 // Navigate to the next item in the list (with wraparound)
 function navigateNext(modal, allItems) {
-  const currentItemId = modal.dataset.currentItemId;
-  const currentIndex = allItems.findIndex(i => i.id === currentItemId);
+  const currentItemIdString = modal.dataset.currentItemId;
+  const currentItemIdNumber = parseInt(currentItemIdString, 10);
+  const currentIndex = allItems.findIndex(i => i.id === currentItemIdNumber);
   // Calculate next index with wraparound
   const nextIndex = (currentIndex + 1) % allItems.length;
   navigateToItem(modal, allItems[nextIndex]);
