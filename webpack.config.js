@@ -1,6 +1,4 @@
 const path = require('path');
-const packageJson = require('./package.json');
-const publicPath = packageJson.homepage ? new URL(packageJson.homepage).pathname : '/';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 

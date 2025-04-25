@@ -37,33 +37,37 @@ const pageManager = {
     this.contactBtn.addEventListener('click', () => this.navigate('contact'));
   },
 
-  // History Management: Central navigation function
+  // History Management
+  getBasePath() {
+    return window.location.hostname.includes('github.io') ? '/Comfy-Cafe' : '';
+  },
+
   navigate(pageName) {
     let pageFunction, navIndex, urlPath;
-
+    const basePath = this.getBasePath();
+  
     switch (pageName) {
       case 'menu':
         pageFunction = createMenu;
         navIndex = 1;
-        urlPath = '/menu';
+        urlPath = `${basePath}/menu`;
         break;
       case 'contact':
         pageFunction = contactPage;
         navIndex = 2;
-        urlPath = '/contact';
+        urlPath = `${basePath}/contact`;
         break;
       case 'home':
-      default: // Default to home
+      default:
         pageFunction = homePage;
         navIndex = 0;
-        urlPath = '/';
+        urlPath = basePath + '/';
         break;
     }
 
-    // Only push state if the URL is actually changing
+    // Only push state if URL is changing
     if (window.location.pathname !== urlPath) {
       const state = { page: pageName, navIndex: navIndex };
-      // Push state: state object, title (unused), URL
       history.pushState(state, '', urlPath);
     }
 
@@ -78,8 +82,6 @@ const pageManager = {
     const page = pageFunction();
     this.content.appendChild(page);
     this.setActiveNav(navIndex);
-    // Consider calling setupMobileNav here if needed after content change
-    // this.setupMobileNav();
   },
 
   // Loaders are now simpler, just call navigate
@@ -133,7 +135,7 @@ const pageManager = {
   // History Management: Handle initial page load
   handleInitialLoad() {
     const path = window.location.pathname;
-    let pageName = 'home'; // Default
+    let pageName = ''; // Default
     if (path === '/menu') {
       pageName = 'menu';
     } else if (path === '/contact') {
@@ -148,7 +150,6 @@ const pageManager = {
     history.replaceState(initialState, '', window.location.pathname);
   },
 
-  // ... (keep setupMobileNav) ...
   setupMobileNav() {
     const hamburger = document.querySelector('.hamburger-menu');
     const nav = document.querySelector('nav');
@@ -168,21 +169,17 @@ const pageManager = {
       nav.classList.toggle('active');
       overlay.classList.toggle('active');
       document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
-      console.log("Menu toggled, active:", nav.classList.contains('active'));
     };
 
-    // Use onclick to simplify listener management if cloning was problematic
     hamburger.onclick = toggleMenu;
     overlay.onclick = toggleMenu;
 
     this.navButtons.forEach(button => {
-      // Ensure original navigation still works
       const originalClickHandler = button.onclick; // Capture potential existing handler
       button.onclick = (e) => {
         if (nav.classList.contains('active')) {
           toggleMenu(); // Close menu if open
         }
-        // Call the original handler if it existed (like the navigate function)
         if (originalClickHandler) {
            originalClickHandler.call(button, e);
         }

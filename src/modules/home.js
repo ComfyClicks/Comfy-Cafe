@@ -1,49 +1,48 @@
 import { food, beverage } from './menuData.js';
 
+// Helper function to create elements with classes and text
+function createElement(type, className = null, textContent = null) {
+  const element = document.createElement(type);
+  if (className) {
+    if (Array.isArray(className)) {
+      className.forEach(cls => element.classList.add(cls));
+    } else {
+      element.classList.add(className);
+    }
+  }
+  if (textContent !== null) {
+    element.textContent = textContent;
+  }
+  return element;
+}
+
 function homePage() {
-  const homeContainer = document.createElement('div');
-  homeContainer.classList.add('home-container');
+  const homeContainer = createElement('div', 'home-container');
   
   // Hero Section
-  const heroSection = document.createElement('section');
-  heroSection.classList.add('hero-section');
-  
-  const heroImage = document.createElement('div');
-  heroImage.classList.add('hero-image');
-  
-  const heroContent = document.createElement('div');
-  heroContent.classList.add('hero-content');
-  
-  const heroHeading = document.createElement('h2');
-  heroHeading.textContent = 'Welcome to Comfy Cafe';
+  const heroSection = createElement('section', 'hero-section');
+  const heroImage = createElement('div', 'hero-image');
+  const heroContent = createElement('div', 'hero-content');
+  const heroHeading = createElement('h2', null, 'Welcome to Comfy Cafe');
   
   heroContent.appendChild(heroHeading);
   heroSection.appendChild(heroImage);
   heroSection.appendChild(heroContent);
   
   // About Us Section
-  const aboutSection = document.createElement('section');
-  aboutSection.classList.add('about-section');
-  
-  const aboutHeading = document.createElement('h3');
-  aboutHeading.textContent = 'About Us';
-  
-  const aboutText = document.createElement('p');
-  aboutText.textContent = 'Established in 2000, Comfy Cafe was born from a simple idea: create a space where people feel at home while enjoying exceptional coffee and food. Our relaxed atmosphere and friendly staff invite you to slow down and savor the moment.';
+  const aboutSection = createElement('section', 'about-section');
+  const aboutHeading = createElement('h3', null, 'About Us');
+  const aboutText = createElement('p', null, 'Established in 2000, Comfy Cafe was born from a simple idea: create a space where people feel at home while enjoying exceptional coffee and food. Our relaxed atmosphere and friendly staff invite you to slow down and savor the moment.');
   
   aboutSection.appendChild(aboutHeading);
   aboutSection.appendChild(aboutText);
   
   // Features Section
-  const featuresSection = document.createElement('section');
-  featuresSection.classList.add('features-section');
-  
-  const featuresHeading = document.createElement('h3');
-  featuresHeading.textContent = 'What Makes Us Special';
+  const featuresSection = createElement('section', 'features-section');
+  const featuresHeading = createElement('h3', null, 'What Makes Us Special');
   featuresSection.appendChild(featuresHeading);
   
-  const featuresGrid = document.createElement('div');
-  featuresGrid.classList.add('features-grid');
+  const featuresGrid = createElement('div', 'features-grid');
   
   const features = [
     {
@@ -69,18 +68,11 @@ function homePage() {
   ];
   
   features.forEach(feature => {
-    const featureCard = document.createElement('div');
-    featureCard.classList.add('feature-card');
+    const featureCard = createElement('div', 'feature-card');
     
-    const featureIcon = document.createElement('span');
-    featureIcon.textContent = feature.icon;
-    featureIcon.classList.add('feature-icon');
-    
-    const featureTitle = document.createElement('h4');
-    featureTitle.textContent = feature.title;
-    
-    const featureDescription = document.createElement('p');
-    featureDescription.textContent = feature.description;
+    const featureIcon = createElement('span', 'feature-icon', feature.icon);
+    const featureTitle = createElement('h4', null, feature.title);
+    const featureDescription = createElement('p', null, feature.description);
     
     featureCard.appendChild(featureIcon);
     featureCard.appendChild(featureTitle);
@@ -92,55 +84,30 @@ function homePage() {
   featuresSection.appendChild(featuresGrid);
   
   // Featured Menu Section
-  const menuSection = document.createElement('section');
-  menuSection.classList.add('featured-menu-section');
-  
-  const menuHeading = document.createElement('h3');
-  menuHeading.textContent = 'Featured Menu Items';
-  
-  const menuGrid = document.createElement('div');
-  menuGrid.classList.add('featured-menu-grid');
+  const menuSection = createElement('section', 'featured-menu-section');
+  const menuHeading = createElement('h3', null, 'Featured Menu Items');
+  const menuGrid = createElement('div', 'featured-menu-grid');
 
-  // Creates array for top six featured items
+  // Creates array for top six featured items - keep exact indices
   const featuredFood = [food[0], food[5], food[7]];
   const featuredbeverage = [beverage[0], beverage[6], beverage[9]];
   const featuredItems = [...featuredFood, ...featuredbeverage];
 
   featuredItems.forEach(item => {
-    const menuItem = document.createElement('div');
-    menuItem.classList.add('featured-menu-item');
-    
-    // Add data attributes for finding this item later
-    const itemId = item.id 
+    const menuItem = createElement('div', 'featured-menu-item');
+    const itemId = item.id;
     menuItem.dataset.itemId = itemId;
-
-    const itemImage = document.createElement('img');
-    itemImage.src = item.image;
-    itemImage.alt = item.name;
-    itemImage.classList.add('featured-item-image');
     
-    const itemInfo = document.createElement('div');
-    itemInfo.classList.add('featured-item-info');
+    menuItem.innerHTML = `
+      <img src="${item.image}" alt="${item.name}" class="featured-item-image">
+      <div class="featured-item-info">
+        <h4 class="featured-item-name">${item.name}</h4>
+        <p>${item.description}</p>
+        <p class="featured-item-price">$${item.price.toFixed(2)}</p>
+      </div>
+    `;
     
-    const itemName = document.createElement('h4');
-    itemName.textContent = item.name;
-    itemName.classList.add('featured-item-name');
-    
-    const itemDescription = document.createElement('p');
-    itemDescription.textContent = item.description;
-    
-    const itemPrice = document.createElement('p');
-    itemPrice.classList.add('featured-item-price');
-    itemPrice.textContent = `$${item.price.toFixed(2)}`;
-    
-    itemInfo.appendChild(itemName);
-    itemInfo.appendChild(itemDescription);
-    itemInfo.appendChild(itemPrice);
-    
-    menuItem.appendChild(itemImage);
-    menuItem.appendChild(itemInfo);
-    
-    // Add click event listener to navigate to menu
+    // Add click event listener to navigate to menu page
     menuItem.addEventListener('click', () => {
       navigateToMenuItem(itemId);
     });
@@ -148,77 +115,51 @@ function homePage() {
     menuGrid.appendChild(menuItem);
   });
   
-  const viewMenuButton = document.createElement('button');
-  viewMenuButton.classList.add('view-menu-btn');
-  viewMenuButton.textContent = 'View Full Menu';
+  const viewMenuButton = createElement('button', 'view-menu-btn', 'View Full Menu');
   
   menuSection.appendChild(menuHeading);
   menuSection.appendChild(menuGrid);
   menuSection.appendChild(viewMenuButton);
   
-// Function to navigate to menu and scroll to the item
-function navigateToMenuItem(itemId) {
-  // Check if loadMenu exists
-  if (typeof window.loadMenu !== 'function') {
-    console.error('loadMenu function not found on window object');
-    return;
+  // Function to navigate to menu and scroll to the item
+  function navigateToMenuItem(itemId) {
+    // Check if loadMenu exists
+    if (typeof window.loadMenu !== 'function') {
+      console.error('loadMenu function not found on window object');
+      return;
+    }
+    
+    // Store the itemId in sessionStorage so it persists across page navigation
+    sessionStorage.setItem('scrollToItemId', itemId);
+    
+    // Navigate to menu page (only once)
+    window.loadMenu(true); // Pass true to skip automatic scroll
   }
-  
-  // Store the itemId in sessionStorage so it persists across page navigation
-  sessionStorage.setItem('scrollToItemId', itemId);
-  
-  // Navigate to menu page (only once)
-  window.loadMenu(true); // Pass true to skip automatic scroll
-}
 
   // Testimonial Section
-  const testimonialSection = document.createElement('section');
-  testimonialSection.classList.add('testimonial-section');
-  
-  const testimonialText = document.createElement('p');
-  testimonialText.classList.add('testimonial-text');
-  testimonialText.textContent = 'Comfy Cafe is my second home. The ambiance is perfect for working, the coffee is exceptional, and the staff makes you feel like family.';
-  
-  const testimonialAuthor = document.createElement('p');
-  testimonialAuthor.classList.add('testimonial-author');
-  testimonialAuthor.textContent = '— Jerry Garcia';
+  const testimonialSection = createElement('section', 'testimonial-section');
+  const testimonialText = createElement('p', 'testimonial-text', 'Comfy Cafe is my second home. The ambiance is perfect for working, the coffee is exceptional, and the staff makes you feel like family.');
+  const testimonialAuthor = createElement('p', 'testimonial-author', '— Jerry Garcia');
   
   testimonialSection.appendChild(testimonialText);
   testimonialSection.appendChild(testimonialAuthor);
   
   // Hours & Location Section
-  const hoursLocationSection = document.createElement('section');
-  hoursLocationSection.classList.add('hours-location-section');
+  const hoursLocationSection = createElement('section', 'hours-location-section');
+  const hoursLocationFlex = createElement('div', 'hours-location-flex');
   
-  const hoursLocationFlex = document.createElement('div');
-  hoursLocationFlex.classList.add('hours-location-flex');
-  
-  const hoursDiv = document.createElement('div');
-  hoursDiv.classList.add('hours-div');
-  
-  const hoursHeading = document.createElement('h3');
-  hoursHeading.textContent = 'Hours';
-  
-  const hoursText = document.createElement('p');
-  hoursText.textContent = 'Open Daily: 7am - 8pm';
+  const hoursDiv = createElement('div', 'hours-div');
+  const hoursHeading = createElement('h3', null, 'Hours');
+  const hoursText = createElement('p', null, 'Open Daily: 7am - 8pm');
   
   hoursDiv.appendChild(hoursHeading);
   hoursDiv.appendChild(hoursText);
   
-  const locationDiv = document.createElement('div');
-  locationDiv.classList.add('location-div');
-  
-  const locationHeading = document.createElement('h3');
-  locationHeading.textContent = 'Location';
-  
-  const locationText = document.createElement('p');
-  locationText.textContent = '123 Comfy Street';
-  const locationTextCity = document.createElement('p');
-  locationTextCity.textContent = ' Paris, France 75008';
-  
-  const contactButton = document.createElement('button');
-  contactButton.classList.add('contact-btn');
-  contactButton.textContent = 'Contact Us';
+  const locationDiv = createElement('div', 'location-div');
+  const locationHeading = createElement('h3', null, 'Location');
+  const locationText = createElement('p', null, '123 Comfy Street');
+  const locationTextCity = createElement('p', null, 'Paris, France 75008');
+  const contactButton = createElement('button', 'contact-btn', 'Contact Us');
   
   locationDiv.appendChild(locationHeading);
   locationDiv.appendChild(locationText);
@@ -227,7 +168,6 @@ function navigateToMenuItem(itemId) {
   
   hoursLocationFlex.appendChild(hoursDiv);
   hoursLocationFlex.appendChild(locationDiv);
-  
   hoursLocationSection.appendChild(hoursLocationFlex);
   
   // Append all sections to the main container
@@ -248,6 +188,6 @@ function navigateToMenuItem(itemId) {
   });
 
   return homeContainer;
-};
+}
 
 export default homePage;
