@@ -2,7 +2,7 @@
 
 # Comfy Cafe
 
-## 🥐 🍩 👀 🍪 ☕️ 🥐 [Live Preview](https://comfyclicks.github.io/Restaurant-Page/) 🧁 🍩 👀 🍪 ☕️ 🧁
+## 🥐 🍩 👀 🍪 ☕️ 🥐 [Live Preview](https://comfyclicks.github.io/Comfy-Cafe/) 🧁 🍩 👀 🍪 ☕️ 🧁
 
 <img src="./src/assets/screenshot-1.png" width="800px">
 <br></br>
