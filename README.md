@@ -1,6 +1,6 @@
 <div align="center">
 
-# Restaurant-Page
+# Comfy Cafe
 
 ## 🥐 🍩 👀 🍪 ☕️ 🥐 [Live Preview](https://comfyclicks.github.io/Restaurant-Page/) 🧁 🍩 👀 🍪 ☕️ 🧁
 
