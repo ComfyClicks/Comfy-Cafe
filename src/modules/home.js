@@ -29,7 +29,7 @@ function homePage() {
   aboutHeading.textContent = 'About Us';
   
   const aboutText = document.createElement('p');
-  aboutText.textContent = 'Established in 2020, Comfy Cafe was born from a simple idea: create a space where people feel at home while enjoying exceptional coffee and food. Our relaxed atmosphere and friendly staff invite you to slow down and savor the moment.';
+  aboutText.textContent = 'Established in 2000, Comfy Cafe was born from a simple idea: create a space where people feel at home while enjoying exceptional coffee and food. Our relaxed atmosphere and friendly staff invite you to slow down and savor the moment.';
   
   aboutSection.appendChild(aboutHeading);
   aboutSection.appendChild(aboutText);

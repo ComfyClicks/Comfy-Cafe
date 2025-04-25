@@ -1,4 +1,6 @@
 const path = require('path');
+// const packageJson = require('./package.json');
+// const publicPath = packageJson.homepage ? new URL(packageJson.homepage).pathname : '/';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -8,7 +10,7 @@ module.exports = {
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: '',
     clean: true,
   },
   devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'eval-source-map',
