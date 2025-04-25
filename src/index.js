@@ -39,7 +39,7 @@ const pageManager = {
 
   // History Management
   getBasePath() {
-    return window.location.hostname.includes('github.io') ? '/Comfy-Cafe' : '';
+    return window.location.hostname.includes('github.io') ? '/Comfy-Cafe/' : '';
   },
 
   navigate(pageName) {
@@ -61,7 +61,7 @@ const pageManager = {
       default:
         pageFunction = homePage;
         navIndex = 0;
-        urlPath = basePath + '/';
+        urlPath = basePath;
         break;
     }
 
