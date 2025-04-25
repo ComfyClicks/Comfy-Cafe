@@ -386,7 +386,7 @@ module.exports = __webpack_require__.p + "aa829c364b872550bc5a.jpg";
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		__webpack_require__.p = "";
+/******/ 		__webpack_require__.p = "/Comfy-Cafe/";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
