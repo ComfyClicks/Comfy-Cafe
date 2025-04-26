@@ -100,6 +100,9 @@ function scrollToHighlightedItem() {
 // Show the modal for a given menu item
 function showItemModal(item) {
   const allItems = [...food, ...beverage]; // Combine all items for navigation
+  document.querySelectorAll('.menu-item').forEach(menuItem => {
+    menuItem.classList.remove('highlight-item', 'highlight');  // Try both possible class names
+  });
 
   // Create modal container and store current item ID in its dataset
   const modal = document.createElement('div');

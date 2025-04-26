@@ -104,7 +104,6 @@ const pageManager = {
 
   // History Management: Handle back/forward button clicks
   handlePopState(event) {
-    console.log("Popstate event:", event.state);
     if (event.state && event.state.page) {
       // Load content based on the state from history
       let pageFunction, navIndex;

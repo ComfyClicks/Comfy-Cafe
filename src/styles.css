@@ -850,7 +850,7 @@ nav {
 @media (max-width: 430px) {
   .modal {
     display: flex;
-    width: 93%;
+    width: 100%;
     padding: 0;
   }
 }
@@ -985,7 +985,7 @@ nav {
 .social-link {
   display: flex;
   justify-content: center;
-  width: 85px;
+  width: 115px;
   color: white;
   text-decoration: none;
   padding: 0.5rem 1rem;
@@ -1122,6 +1122,12 @@ nav {
   text-align: center;
 }
 
+@media (max-width: 480px) {
+  .submit-btn {
+    width: 100%;
+  }
+}
+
 /* FAQ Section */
 .faq-section {
   margin-bottom: 4rem;
@@ -1217,10 +1223,6 @@ nav {
     text-align: center;
   }
   
-  .social-links {
-    flex-wrap: wrap;
-  }
-  
   .map-container iframe {
     height: 400px;
   }
@@ -1236,10 +1238,6 @@ nav {
     width: 85px;
     align-self: center;
     text-align: center;
-  }
-  
-  .contact-form-section {
-    padding: 1.5rem;
   }
 }
 
