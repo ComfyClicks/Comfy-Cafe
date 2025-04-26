@@ -1,144 +1,104 @@
+// Helper functions for element creation
+function createElement(tag, className = null, textContent = null) {
+  const element = document.createElement(tag);
+  if (className) element.classList.add(className);
+  if (textContent !== null) element.textContent = textContent;
+  return element;
+}
+
+function createContactDetail(icon, content, isHTML = false) {
+  const detailDiv = createElement('div', 'contact-detail');
+  const iconSpan = createElement('span', 'contact-icon', icon);
+  const contentP = createElement('p');
+  
+  if (isHTML) {
+    contentP.innerHTML = content;
+  } else {
+    contentP.textContent = content;
+  }
+  
+  detailDiv.append(iconSpan, contentP);
+  return detailDiv;
+}
+
+function appendMultiple(parent, children) {
+  const fragment = document.createDocumentFragment();
+  children.forEach(child => fragment.appendChild(child));
+  parent.appendChild(fragment);
+}
+
+function createFormField(type, id, labelText, required = false) {
+  const fieldDiv = createElement('div', 'form-field');
+  
+  const label = createElement('label', null, labelText);
+  label.setAttribute('for', id);
+  
+  const input = document.createElement('input');
+  input.type = type;
+  input.id = id;
+  input.name = id;
+  if (required) input.required = true;
+  
+  fieldDiv.append(label, input);
+  return fieldDiv;
+}
+
 function contactPage() {
-  const contactContainer = document.createElement('div');
-  contactContainer.classList.add('contact-container');
+  const contactContainer = createElement('div', 'contact-container');
   
   // Contact Information Section
-  const infoSection = document.createElement('section');
-  infoSection.classList.add('contact-info-section');
+  const infoSection = createElement('section', 'contact-info-section');
+  const cafeInfo = createElement('div', 'cafe-info');
   
-  const cafeInfo = document.createElement('div');
-  cafeInfo.classList.add('cafe-info');
+  const cafeName = createElement('h2', null, 'Comfy Cafe');
+  const tagline = createElement('p', 'tagline', 'The comfiest cup of coffee in the world');
   
-  const cafeName = document.createElement('h2');
-  cafeName.textContent = 'Comfy Cafe';
+  const addressDiv = createContactDetail('📍', '123 Comfy Street<br>Paris, France 75008', true);
+  const phoneDiv = createContactDetail('📞', '(555) 123-4567');
+  const emailDiv = createContactDetail('✉️', 'hello@comfycafe.com');
+  const hoursDiv = createContactDetail('🕒', 'Monday-Friday: 7am - 8pm<br>Saturday-Sunday: 7am - 9pm', true);
   
-  const tagline = document.createElement('p');
-  tagline.classList.add('tagline');
-  tagline.textContent = 'The comfiest cup of coffee in the world';
-  
-  const addressDiv = document.createElement('div');
-  addressDiv.classList.add('contact-detail');
-  
-  const addressIcon = document.createElement('span');
-  addressIcon.classList.add('contact-icon');
-  addressIcon.textContent = '📍';
-  
-  const address = document.createElement('p');
-  address.innerHTML = '123 Comfy Street<br>Paris, France 75008';
-  
-  addressDiv.appendChild(addressIcon);
-  addressDiv.appendChild(address);
-  
-  const phoneDiv = document.createElement('div');
-  phoneDiv.classList.add('contact-detail');
-  
-  const phoneIcon = document.createElement('span');
-  phoneIcon.classList.add('contact-icon');
-  phoneIcon.textContent = '📞';
-  
-  const phone = document.createElement('p');
-  phone.textContent = '(555) 123-4567';
-  
-  phoneDiv.appendChild(phoneIcon);
-  phoneDiv.appendChild(phone);
-  
-  const emailDiv = document.createElement('div');
-  emailDiv.classList.add('contact-detail');
-  
-  const emailIcon = document.createElement('span');
-  emailIcon.classList.add('contact-icon');
-  emailIcon.textContent = '✉️';
-  
-  const email = document.createElement('p');
-  email.textContent = 'hello@comfycafe.com';
-  
-  emailDiv.appendChild(emailIcon);
-  emailDiv.appendChild(email);
-  
-  const hoursDiv = document.createElement('div');
-  hoursDiv.classList.add('contact-detail');
-  
-  const hoursIcon = document.createElement('span');
-  hoursIcon.classList.add('contact-icon');
-  hoursIcon.textContent = '🕒';
-  
-  const hours = document.createElement('p');
-  hours.innerHTML = 'Monday-Friday: 7am - 8pm<br>Saturday-Sunday: 7am - 9pm';
-  
-  hoursDiv.appendChild(hoursIcon);
-  hoursDiv.appendChild(hours);
-  
-  const socialDiv = document.createElement('div');
-  socialDiv.classList.add('social-links');
+  const socialDiv = createElement('div', 'social-links');
   
   ['Instagram', 'Github'].forEach(platform => {
-    const socialLink = document.createElement('a');
+    const socialLink = createElement('a', 'social-link', platform);
     socialLink.href = `https://${platform.toLowerCase()}.com/comfyclicks`;
-    socialLink.textContent = platform;
     socialLink.target = '_blank';
-    socialLink.classList.add('social-link');
     socialDiv.appendChild(socialLink);
   });
   
-  cafeInfo.appendChild(cafeName);
-  cafeInfo.appendChild(tagline);
-  cafeInfo.appendChild(addressDiv);
-  cafeInfo.appendChild(phoneDiv);
-  cafeInfo.appendChild(emailDiv);
-  cafeInfo.appendChild(hoursDiv);
-  cafeInfo.appendChild(socialDiv);
-  
+  appendMultiple(cafeInfo, [
+    cafeName, tagline, addressDiv, phoneDiv, emailDiv, hoursDiv, socialDiv
+  ]);
   infoSection.appendChild(cafeInfo);
   
   // Map Section
-  const mapSection = document.createElement('section');
-  mapSection.classList.add('map-section');
-  
-  const mapContainer = document.createElement('div');
-  mapContainer.classList.add('map-container');
+  const mapSection = createElement('section', 'map-section');
+  const mapContainer = createElement('div', 'map-container');
   mapContainer.innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5106.841867971144!2d2.308114636116401!3d48.86671632379263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fc518637631%3A0x7c6b92d2c2465999!2zQ2hhbXBzLcOJbHlzw6llcywgUGFyaXMsIEZyYW5jZQ!5e0!3m2!1sen!2sus!4v1744957795273!5m2!1sen!2sus" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
   
-  const mapInfo = document.createElement('div');
-  mapInfo.classList.add('map-info');
-  
-  const directionsBtn = document.createElement('a');
+  const mapInfo = createElement('div', 'map-info');
+  const directionsBtn = createElement('a', 'directions-btn', 'Get Directions');
   directionsBtn.href = 'https://maps.app.goo.gl/viW1uyVZKDRN2d3Q8';
   directionsBtn.target = '_blank';
-  directionsBtn.classList.add('directions-btn');
-  directionsBtn.textContent = 'Get Directions';
   
-  const parkingInfo = document.createElement('p');
-  parkingInfo.textContent = 'Metro and bus stops nearby on Avenue des Champs-Élysées.';
+  const parkingInfo = createElement('p', null, 'Metro and bus stops nearby on Avenue des Champs-Élysées.');
   
-  mapInfo.appendChild(directionsBtn);
-  mapInfo.appendChild(parkingInfo);
+  mapInfo.append(directionsBtn, parkingInfo);
+  mapSection.append(mapContainer, mapInfo);
   
-  mapSection.appendChild(mapContainer);
-  mapSection.appendChild(mapInfo);
+  // Contact Form Section
+  const formSection = createElement('section', 'contact-form-section');
+  const formHeading = createElement('h2', null, 'Send Us a Message');
+  const contactForm = createElement('form', 'contact-form');
   
-  // Contact Form
-  const formSection = document.createElement('section');
-  formSection.classList.add('contact-form-section');
-  
-  const formHeading = document.createElement('h2');
-  formHeading.textContent = 'Send Us a Message';
-  
-  const contactForm = document.createElement('form');
-  contactForm.classList.add('contact-form');
-  
-  // Name field
   const nameField = createFormField('text', 'name', 'Your Name', true);
-  
-  // Email field
   const emailField = createFormField('email', 'email', 'Your Email', true);
   
   // Subject dropdown
-  const subjectField = document.createElement('div');
-  subjectField.classList.add('form-field');
-  
-  const subjectLabel = document.createElement('label');
+  const subjectField = createElement('div', 'form-field');
+  const subjectLabel = createElement('label', null, 'Subject');
   subjectLabel.setAttribute('for', 'subject');
-  subjectLabel.textContent = 'Subject';
   
   const subjectSelect = document.createElement('select');
   subjectSelect.id = 'subject';
@@ -146,7 +106,6 @@ function contactPage() {
   subjectSelect.required = true;
   
   const subjects = ['General Inquiry', 'Reservation Request', 'Feedback', 'Catering/Events'];
-  
   subjects.forEach(subj => {
     const option = document.createElement('option');
     option.value = subj.toLowerCase().replace(/\s+/g, '-');
@@ -154,16 +113,12 @@ function contactPage() {
     subjectSelect.appendChild(option);
   });
   
-  subjectField.appendChild(subjectLabel);
-  subjectField.appendChild(subjectSelect);
+  subjectField.append(subjectLabel, subjectSelect);
   
   // Message text area
-  const messageField = document.createElement('div');
-  messageField.classList.add('form-field');
-  
-  const messageLabel = document.createElement('label');
+  const messageField = createElement('div', 'form-field');
+  const messageLabel = createElement('label', null, 'Your Message');
   messageLabel.setAttribute('for', 'message');
-  messageLabel.textContent = 'Your Message';
   
   const messageTextarea = document.createElement('textarea');
   messageTextarea.id = 'message';
@@ -171,39 +126,24 @@ function contactPage() {
   messageTextarea.rows = 5;
   messageTextarea.required = true;
   
-  messageField.appendChild(messageLabel);
-  messageField.appendChild(messageTextarea);
+  messageField.append(messageLabel, messageTextarea);
   
-  // Submit button
-  const submitButton = document.createElement('button');
+  // Submit button and privacy notice
+  const submitButton = createElement('button', 'submit-btn', 'Send Message');
   submitButton.type = 'submit';
-  submitButton.classList.add('submit-btn');
-  submitButton.textContent = 'Send Message';
   
-  // Privacy notice
-  const privacyNotice = document.createElement('p');
-  privacyNotice.classList.add('privacy-notice');
-  privacyNotice.textContent = 'Your information will be used only to respond to your inquiry and will never be shared with third parties.';
+  const privacyNotice = createElement('p', 'privacy-notice', 
+    'Your information will be used only to respond to your inquiry and will never be shared with third parties.');
   
-  contactForm.appendChild(nameField);
-  contactForm.appendChild(emailField);
-  contactForm.appendChild(subjectField);
-  contactForm.appendChild(messageField);
-  contactForm.appendChild(submitButton);
-  contactForm.appendChild(privacyNotice);
-  
-  formSection.appendChild(formHeading);
-  formSection.appendChild(contactForm);
+  appendMultiple(contactForm, [
+    nameField, emailField, subjectField, messageField, submitButton, privacyNotice
+  ]);
+  formSection.append(formHeading, contactForm);
   
   // FAQ Section
-  const faqSection = document.createElement('section');
-  faqSection.classList.add('faq-section');
-  
-  const faqHeading = document.createElement('h2');
-  faqHeading.textContent = 'Frequently Asked Questions';
-  
-  const faqList = document.createElement('div');
-  faqList.classList.add('faq-list');
+  const faqSection = createElement('section', 'faq-section');
+  const faqHeading = createElement('h2', null, 'Frequently Asked Questions');
+  const faqList = createElement('div', 'faq-list');
   
   const faqs = [
     {
@@ -225,79 +165,38 @@ function contactPage() {
   ];
   
   faqs.forEach(faq => {
-    const faqItem = document.createElement('div');
-    faqItem.classList.add('faq-item');
-    
-    const question = document.createElement('h3');
-    question.textContent = faq.question;
-    
-    const answer = document.createElement('p');
-    answer.textContent = faq.answer;
-    
-    faqItem.appendChild(question);
-    faqItem.appendChild(answer);
-    
+    const faqItem = createElement('div', 'faq-item');
+    const question = createElement('h3', null, faq.question);
+    const answer = createElement('p', null, faq.answer);
+    faqItem.append(question, answer);
     faqList.appendChild(faqItem);
   });
   
-  faqSection.appendChild(faqHeading);
-  faqSection.appendChild(faqList);
+  faqSection.append(faqHeading, faqList);
   
   // Accessibility Section
-  const accessibilitySection = document.createElement('section');
-  accessibilitySection.classList.add('accessibility-section');
+  const accessibilitySection = createElement('section', 'accessibility-section');
+  const accessibilityHeading = createElement('h2', null, 'Accessibility');
+  const accessibilityInfo = createElement('div', 'accessibility-info');
   
-  const accessibilityHeading = document.createElement('h2');
-  accessibilityHeading.textContent = 'Accessibility';
-  
-  const accessibilityInfo = document.createElement('div');
-  accessibilityInfo.classList.add('accessibility-info');
-  
-  const wheelchairInfo = document.createElement('p');
+  const wheelchairInfo = createElement('p');
   wheelchairInfo.innerHTML = '<strong>♿️ Wheelchair Access:</strong> Our café is fully wheelchair accessible with a ramp at the entrance and accessible restrooms.';
   
-  const allergenInfo = document.createElement('p');
+  const allergenInfo = createElement('p');
   allergenInfo.innerHTML = '<strong>🥜 Allergens:</strong> We offer gluten-free, dairy-free, and nut-free options. Please inform our staff about any allergies or dietary restrictions.';
   
-  const additionalInfo = document.createElement('p');
+  const additionalInfo = createElement('p');
   additionalInfo.innerHTML = '<strong>🔊 Additional Accommodations:</strong> We provide large-print menus upon request and welcome service animals.';
   
-  accessibilityInfo.appendChild(wheelchairInfo);
-  accessibilityInfo.appendChild(allergenInfo);
-  accessibilityInfo.appendChild(additionalInfo);
-  
-  accessibilitySection.appendChild(accessibilityHeading);
-  accessibilitySection.appendChild(accessibilityInfo);
+  appendMultiple(accessibilityInfo, [wheelchairInfo, allergenInfo, additionalInfo]);
+  accessibilitySection.append(accessibilityHeading, accessibilityInfo);
   
   // Append all sections to container
-  contactContainer.appendChild(infoSection);
-  contactContainer.appendChild(mapSection);
-  contactContainer.appendChild(formSection);
-  contactContainer.appendChild(faqSection);
-  contactContainer.appendChild(accessibilitySection);
+  appendMultiple(contactContainer, [
+    infoSection, mapSection, formSection, faqSection, accessibilitySection
+  ]);
   
   return contactContainer;
-};
-
-// Helper function to create form fields
-function createFormField(type, id, labelText, required = false) {
-  const fieldDiv = document.createElement('div');
-  fieldDiv.classList.add('form-field');
-  
-  const label = document.createElement('label');
-  label.setAttribute('for', id);
-  label.textContent = labelText;
-  
-  const input = document.createElement('input');
-  input.type = type;
-  input.id = id;
-  input.name = id;
-  if (required) input.required = true;
-  
-  fieldDiv.appendChild(label);
-  fieldDiv.appendChild(input);
-  
-  return fieldDiv;
 }
 
 export default contactPage;

@@ -50,12 +50,12 @@ const pageManager = {
       case 'menu':
         pageFunction = createMenu;
         navIndex = 1;
-        urlPath = `${basePath}/menu`;
+        urlPath = `${basePath}menu`;
         break;
       case 'contact':
         pageFunction = contactPage;
         navIndex = 2;
-        urlPath = `${basePath}/contact`;
+        urlPath = `${basePath}contact`;
         break;
       case 'home':
       default:

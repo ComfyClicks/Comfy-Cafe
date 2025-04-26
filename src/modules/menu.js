@@ -281,5 +281,4 @@ function closeModal(modal) {
   }, 200); // Match CSS animation duration for closing
 }
 
-// --- Export ---
 export default createMenu;
