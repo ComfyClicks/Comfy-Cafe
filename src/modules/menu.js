@@ -214,23 +214,22 @@ function setupModalKeyboardNavigation(modal, allItems) {
   }, { once: true });
 }
 
+// Helper function to get current index
+function getCurrentIndex(modal, allItems) {
+  const currentItemId = parseInt(modal.dataset.currentItemId, 10);
+  return allItems.findIndex(i => i.id === currentItemId);
+}
+
 // Navigate to the previous item in the list (with wraparound)
 function navigatePrevious(modal, allItems) {
-  const currentItemIdString = modal.dataset.currentItemId;
-  // Convert the string ID from the dataset to a number
-  const currentItemIdNumber = parseInt(currentItemIdString, 10); 
-  const currentIndex = allItems.findIndex(i => i.id === currentItemIdNumber);
-  // Calculate previous index with wraparound
+  const currentIndex = getCurrentIndex(modal, allItems);
   const prevIndex = (currentIndex - 1 + allItems.length) % allItems.length;
   navigateToItem(modal, allItems[prevIndex]);
 }
 
 // Navigate to the next item in the list (with wraparound)
 function navigateNext(modal, allItems) {
-  const currentItemIdString = modal.dataset.currentItemId;
-  const currentItemIdNumber = parseInt(currentItemIdString, 10);
-  const currentIndex = allItems.findIndex(i => i.id === currentItemIdNumber);
-  // Calculate next index with wraparound
+  const currentIndex = getCurrentIndex(modal, allItems);
   const nextIndex = (currentIndex + 1) % allItems.length;
   navigateToItem(modal, allItems[nextIndex]);
 }

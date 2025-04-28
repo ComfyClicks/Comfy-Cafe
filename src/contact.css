@@ -259,9 +259,11 @@
 
 /* Accessibility Section */
 .accessibility-section {
-  background-color: #f9f7f0;
+  background-color: var(--cream-white);
   padding: 2rem;
   border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+
 }
 
 .accessibility-section h2 {
