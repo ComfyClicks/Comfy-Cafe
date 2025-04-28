@@ -1,5 +1,9 @@
-import "./styles.css";
-import homePage from "./modules/home.js";
+import './normalize.css';
+import './global.css';
+import './home.css';
+import './menu.css';
+import './contact.css';
+import homePage from './modules/home.js';
 import contactPage from './modules/contact.js';
 import createMenu from './modules/menu.js';
 
