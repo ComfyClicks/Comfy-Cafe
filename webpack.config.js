@@ -30,7 +30,6 @@ module.exports = {
         removeAttributeQuotes: true
       } : false,
     }),
-    // Extract CSS into separate files
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
@@ -38,11 +37,33 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', {
+                useBuiltIns: 'usage',
+                corejs: '3.25',
+                targets: {
+                  browsers: [
+                    '> 1%',
+                    'last 2 versions',
+                    'not dead'
+                  ]
+                }
+              }]
+            ]
+          }
+        }
+      },
+      {
         test: /\.css$/i,
         use: [
           process.env.NODE_ENV === 'production' 
             ? MiniCssExtractPlugin.loader 
-            : 'style-loader',  // Use style-loader in development
+            : 'style-loader',
           'css-loader',
         ],
       },
@@ -57,12 +78,8 @@ module.exports = {
     ],
   },
   optimization: {
-    minimize: process.env.NODE_ENV === "production",
     splitChunks: {
-      chunks: 'all',
-    },
-  },
-  performance: {
-    hints: process.env.NODE_ENV === "production" ? "warning" : false,
-  },
+      chunks: 'all'
+    }
+  }
 };
