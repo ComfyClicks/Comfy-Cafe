@@ -308,63 +308,55 @@
   }
   
   .modal-details {
-    width: 80%;
+    width: 100%;
     margin-top: -3rem;
   }
 }
 
 @media (max-width: 430px) {
   .modal {
-    display: flex;
-    width: 100%;
     padding: 0;
   }
-
+  
   .modal-content {
-    width: 80%;
-    height: 90vh;
-    max-height: 100vh;
-    border-radius: 8px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 390px) {
-  .modal-image {
-    height: 220px;
-  }
-
-  .modal-details {
-    font-size: 1rem;
-    padding: 2.2rem 2.8rem 0 2.8rem;
     width: 100%;
     height: 100%;
+    border-radius: 0;
+    max-height: none;
   }
-
+  
+  .modal-image {
+    height: 40%;
+  }
+  
+  .modal-details {
+    padding: 0 3rem;
+    overflow: auto;
+  }
+  
   .modal-name {
     font-size: 1.4rem;
+    margin-top: 4rem;
   }
-
-  .modal-price {
-    font-size: .9rem;
-    margin-bottom: -3px;
-  }
-
-  .modal-description {
-    font-size: .9rem;
-    margin-bottom: -3px;
-  }
-
-  .modal-calories {
-    font-size: .9rem;
-    margin-bottom: -3px;
-  }
-
+  
+  .modal-price,
+  .modal-description,
+  .modal-calories,
   .modal-ingredients {
-    font-size: .9rem;
-    margin-bottom: -3px;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .close-modal {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 5px;
+    right: 5px;
   }
 }
 
