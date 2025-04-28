@@ -32,6 +32,10 @@ body {
   justify-items: center;
 }
 
+body.modal-open .hamburger-menu {
+  display: none !important;
+}
+
 /* Header and Navigation styling */
 header {
   display: flex;

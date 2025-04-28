@@ -109,6 +109,9 @@ function showItemModal(item) {
   modal.classList.add('modal');
   modal.dataset.currentItemId = item.id; // Key fix: Store current ID here
 
+  // Hides hamburger when modal is open
+  document.body.classList.add('modal-open');
+
   // Populate modal content using template literal
   modal.innerHTML = `
     <div class="modal-content">
@@ -279,6 +282,9 @@ function closeModal(modal) {
       document.body.removeChild(modal);
     }
   }, 200); // Match CSS animation duration for closing
+  
+  // Displays hamburger when modal is closed
+  setTimeout(() => document.body.classList.remove('modal-open'), 201);
 }
 
 export default createMenu;
