@@ -49,7 +49,7 @@ function createMenuItem(item) {
 
   // Use template literal for cleaner HTML structure
   menuItem.innerHTML = `
-    <img src="${item.image}" alt="${item.name}" class="item-picture">
+    <img src="${item.image}" alt="${item.name}" class="item-picture" loading="lazy">
     <h2 class="item-name">${item.name}</h2>
     <p class="price">$${item.price.toFixed(2)}</p>
     <p class="item-description">${item.description}</p>
@@ -119,7 +119,7 @@ function showItemModal(item) {
       <div class="nav-arrow left-arrow">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36"><path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
       </div>
-      <img src="${item.image}" alt="${item.name}" class="modal-image">
+      <img src="${item.image}" alt="${item.name}" class="modal-image" loading="lazy">
       <div class="modal-details">
         <h2 class="modal-name">${item.name}</h2>
         <p class="modal-price">$${item.price.toFixed(2)}</p>
