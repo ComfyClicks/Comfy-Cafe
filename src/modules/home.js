@@ -4,11 +4,7 @@ import { food, beverage } from './menuData.js';
 function createElement(type, className = null, textContent = null) {
   const element = document.createElement(type);
   if (className) {
-    if (Array.isArray(className)) {
-      className.forEach(cls => element.classList.add(cls));
-    } else {
       element.classList.add(className);
-    }
   }
   if (textContent !== null) {
     element.textContent = textContent;

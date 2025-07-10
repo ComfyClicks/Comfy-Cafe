@@ -65,11 +65,12 @@ header h1 {
 
 nav {
   display: flex;
-  gap: .6rem;
+  gap: .4rem;
   padding-right: 1rem;
 }
 
 .nav-btns {
+  width: 95px;
   background: transparent;
   color: var(--cream-white);
   border: none;

@@ -79,7 +79,7 @@ const pageManager = {
     this.loadPageContent(pageFunction, navIndex);
   },
 
-  // Renamed from loadPage - just handles content update
+  // Handles content update
   loadPageContent(pageFunction, navIndex) {
     this.content.textContent = '';
     window.scrollTo(0, 0);
@@ -88,7 +88,7 @@ const pageManager = {
     this.setActiveNav(navIndex);
   },
 
-  // Loaders are now simpler, just call navigate
+  // Loaders
   loadHome() {
     this.navigate('home');
   },
