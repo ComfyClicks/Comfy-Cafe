@@ -88,5 +88,12 @@ module.exports = {
     splitChunks: {
       chunks: 'all'
     }
+  },
+  performance: {
+    // Adjust performance hints for a media-rich website
+    // Development builds are naturally larger (no minification, includes source maps)
+    maxAssetSize: process.env.NODE_ENV === 'production' ? 400000 : 1000000,
+    maxEntrypointSize: process.env.NODE_ENV === 'production' ? 500000 : 1000000,
+    hints: process.env.NODE_ENV === 'production' ? 'warning' : false, // Only show in production
   }
 };
