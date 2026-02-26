@@ -47,9 +47,14 @@ function createMenuItem(item) {
   menuItem.classList.add('menu-item', 'clickable');
   menuItem.dataset.itemId = item.id; // Store item ID for later reference
 
-  // Use template literal for cleaner HTML structure
+  // Use template literal for cleaner HTML structure with responsive images
   menuItem.innerHTML = `
-    <img src="${item.image}" alt="${item.name}" class="item-picture" loading="lazy">
+    <img src="${item.image}" 
+         srcset="${item.imageThumbnail} 512w, ${item.image} 1024w"
+         sizes="(max-width: 768px) 512px, 1024px"
+         alt="${item.name}" 
+         class="item-picture" 
+         loading="lazy">
     <h2 class="item-name">${item.name}</h2>
     <p class="price">$${item.price.toFixed(2)}</p>
     <p class="item-description">${item.description}</p>
@@ -112,14 +117,19 @@ function showItemModal(item) {
   // Hides hamburger when modal is open
   document.body.classList.add('modal-open');
 
-  // Populate modal content using template literal
+  // Populate modal content using template literal with responsive images
   modal.innerHTML = `
     <div class="modal-content">
       <span class="close-modal">&times;</span>
       <div class="nav-arrow left-arrow">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36"><path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
       </div>
-      <img src="${item.image}" alt="${item.name}" class="modal-image" loading="lazy">
+      <img src="${item.image}" 
+           srcset="${item.imageThumbnail} 512w, ${item.image} 1024w"
+           sizes="(max-width: 768px) 100vw, 800px"
+           alt="${item.name}" 
+           class="modal-image" 
+           loading="lazy">
       <div class="modal-details">
         <h2 class="modal-name">${item.name}</h2>
         <p class="modal-price">$${item.price.toFixed(2)}</p>

@@ -95,7 +95,12 @@ function homePage() {
     menuItem.dataset.itemId = itemId;
     
     menuItem.innerHTML = `
-      <img src="${item.image}" alt="${item.name}" class="featured-item-image">
+      <img src="${item.image}" 
+           srcset="${item.imageThumbnail} 512w, ${item.image} 1024w"
+           sizes="(max-width: 768px) 90vw, 400px"
+           alt="${item.name}" 
+           class="featured-item-image"
+           loading="lazy">
       <div class="featured-item-info">
         <h4 class="featured-item-name">${item.name}</h4>
         <p>${item.description}</p>

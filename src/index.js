@@ -1,11 +1,33 @@
 import './normalize.css';
 import './global.css';
-import './home.css';
-import './menu.css';
-import './contact.css';
 import homePage from './modules/home.js';
 import contactPage from './modules/contact.js';
 import createMenu from './modules/menu.js';
+
+// Track loaded stylesheets to avoid duplicates
+const loadedStyles = new Set();
+
+// Dynamic CSS loader
+async function loadPageStyles(pageName) {
+  if (loadedStyles.has(pageName)) return;
+  
+  try {
+    switch(pageName) {
+      case 'home':
+        await import('./home.css');
+        break;
+      case 'menu':
+        await import('./menu.css');
+        break;
+      case 'contact':
+        await import('./contact.css');
+        break;
+    }
+    loadedStyles.add(pageName);
+  } catch (err) {
+    console.error(`Failed to load styles for ${pageName}:`, err);
+  }
+}
 
 // Page management
 const pageManager = {
@@ -46,7 +68,7 @@ const pageManager = {
     return window.location.hostname.includes('github.io') ? '/Comfy-Cafe/' : '';
   },
 
-  navigate(pageName) {
+  async navigate(pageName) {
     let pageFunction, navIndex, urlPath;
     const basePath = this.getBasePath();
   
@@ -68,6 +90,9 @@ const pageManager = {
         urlPath = basePath;
         break;
     }
+
+    // Load page-specific styles before navigation
+    await loadPageStyles(pageName);
 
     // Only push state if URL is changing
     if (window.location.pathname !== urlPath) {

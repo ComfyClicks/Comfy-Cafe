@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
@@ -33,6 +34,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
+    // Bundle analyzer - run with ANALYZE=true npm run build to see bundle composition
+    ...(process.env.ANALYZE ? [new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      openAnalyzer: true,
+      reportFilename: 'bundle-report.html'
+    })] : []),
   ],
   module: {
     rules: [
@@ -72,7 +79,7 @@ module.exports = {
         loader: 'html-loader',
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
         type: 'asset/resource',
       },
     ],
