@@ -263,6 +263,7 @@ function navigateToItem(modal, newItem) {
   // Update content after a short delay to allow animation start
   setTimeout(() => {
     img.src = newItem.image;
+    img.srcset = `${newItem.imageThumbnail} 512w, ${newItem.image} 1024w`;
     img.alt = newItem.name;
     nameEl.textContent = newItem.name;
     priceEl.textContent = `$${newItem.price.toFixed(2)}`;
