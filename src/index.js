@@ -1,11 +1,12 @@
 import './normalize.css';
 import './global.css';
+import './home.css'; // Pre-load home CSS since it's the default landing page
 import homePage from './modules/home.js';
 import contactPage from './modules/contact.js';
 import createMenu from './modules/menu.js';
 
 // Track loaded stylesheets to avoid duplicates
-const loadedStyles = new Set();
+const loadedStyles = new Set(['home']); // home.css is already loaded above
 
 // Dynamic CSS loader
 async function loadPageStyles(pageName) {
@@ -13,9 +14,6 @@ async function loadPageStyles(pageName) {
   
   try {
     switch(pageName) {
-      case 'home':
-        await import('./home.css');
-        break;
       case 'menu':
         await import('./menu.css');
         break;
@@ -31,7 +29,7 @@ async function loadPageStyles(pageName) {
 
 // Page management
 const pageManager = {
-  init() {
+  async init() {
     this.cacheDom();
     this.bindEvents();
     window.loadHome = () => this.loadHome();
@@ -42,7 +40,7 @@ const pageManager = {
     window.addEventListener('popstate', (event) => this.handlePopState(event));
 
     // Initial page load based on current URL or default to home
-    this.handleInitialLoad();
+    await this.handleInitialLoad(); // Wait for initial CSS and page load
     this.setupMobileNav(); // Setup mobile nav after initial load
   },
 
@@ -161,7 +159,7 @@ const pageManager = {
   },
 
   // History Management: Handle initial page load
-  handleInitialLoad() {
+  async handleInitialLoad() {
     const path = window.location.pathname;
     let pageName = ''; // Default
     if (path === '/menu') {
@@ -170,8 +168,8 @@ const pageManager = {
       pageName = 'contact';
     }
 
-    // Load the initial page content
-    this.navigate(pageName);
+    // Load the initial page content (await to ensure CSS loads first)
+    await this.navigate(pageName);
 
     // Replace the initial history state so 'back' from the first page works correctly
     const initialState = { page: pageName, navIndex: this.activeNavIndex };
@@ -217,4 +215,6 @@ const pageManager = {
 };
 
 // Initialize the application
-pageManager.init();
+(async () => {
+  await pageManager.init();
+})();
