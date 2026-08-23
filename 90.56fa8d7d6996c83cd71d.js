@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcomfy_cafe=self.webpackChunkcomfy_cafe||[]).push([[90],{8090:(c,e,f)=>{f.r(e)}}]);
