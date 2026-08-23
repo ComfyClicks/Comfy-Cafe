@@ -194,7 +194,10 @@ const pageManager = {
       hamburger.classList.toggle('active');
       nav.classList.toggle('active');
       overlay.classList.toggle('active');
-      document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+      const isOpen = nav.classList.contains('active');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+      hamburger.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     };
 
     hamburger.onclick = toggleMenu;

@@ -1,10 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
+const modeArgIndex = process.argv.indexOf('--mode');
+const buildMode = modeArgIndex >= 0 ? process.argv[modeArgIndex + 1] : process.env.NODE_ENV;
+const isProduction = buildMode === 'production';
+
 module.exports = {
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  mode: isProduction ? 'production' : 'development',
   entry: './src/index.js',
   output: {
     filename: '[name].[contenthash].js',
@@ -12,7 +17,7 @@ module.exports = {
     publicPath: '',
     clean: true,
   },
-  devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'eval-source-map',
+  devtool: isProduction ? false : 'eval-source-map',
   devServer: {
     static: './dist',
     hot: true,
@@ -25,7 +30,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/template.html',
-      minify: process.env.NODE_ENV === 'production' ? {
+      minify: isProduction ? {
         removeComments: true,
         collapseWhitespace: true,
         removeAttributeQuotes: true
@@ -68,8 +73,8 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          process.env.NODE_ENV === 'production' 
-            ? MiniCssExtractPlugin.loader 
+          isProduction
+            ? MiniCssExtractPlugin.loader
             : 'style-loader',
           'css-loader',
         ],
@@ -85,6 +90,11 @@ module.exports = {
     ],
   },
   optimization: {
+    minimize: isProduction,
+    minimizer: [
+      '...',
+      new CssMinimizerPlugin(),
+    ],
     splitChunks: {
       chunks: 'all'
     }
@@ -92,8 +102,8 @@ module.exports = {
   performance: {
     // Adjust performance hints for a media-rich website
     // Development builds are naturally larger (no minification, includes source maps)
-    maxAssetSize: process.env.NODE_ENV === 'production' ? 400000 : 1000000,
-    maxEntrypointSize: process.env.NODE_ENV === 'production' ? 500000 : 1000000,
-    hints: process.env.NODE_ENV === 'production' ? 'warning' : false, // Only show in production
+    maxAssetSize: isProduction ? 400000 : 1000000,
+    maxEntrypointSize: isProduction ? 500000 : 1000000,
+    hints: isProduction ? 'warning' : false, // Only show in production
   }
 };

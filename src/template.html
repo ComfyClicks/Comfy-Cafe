@@ -4,34 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Comfy Cafe</title>
+  <meta name="description" content="Comfy Cafe serves locally roasted coffee, homemade pastries, and a welcoming place to relax or work in Paris.">
   <meta name="theme-color" content="#121617">
   <link rel="icon" type="image/png" href="./assets/favicon-96x96.png" sizes="96x96" />
   <link rel="shortcut icon" href="./assets/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+  <meta name="apple-mobile-web-app-title" content="Comfy Cafe" />
   <link rel="manifest" href="./assets/site.webmanifest" />
   <!-- Preload critical hero image for faster LCP -->
-  <link rel="preload" as="image" href="./assets/comfy-cafe.webp" type="image/webp">
+  <link rel="preload" as="image" href="./assets/comfy-cafe-1280.webp" type="image/webp" fetchpriority="high">
 </head>
 <body>
   <header>
     <h1 class="header-h1">Comfy Cafe</h1>
 
     <!-- Hamburger button -->
-    <div class="hamburger-menu">
+    <button class="hamburger-menu" type="button" aria-label="Open navigation" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
-    </div>
+    </button>
 
     <!-- Navigation -->
     <nav>
-      <button class="nav-btns">Home</button>
-      <button class="nav-btns">Menu</button>
-      <button class="nav-btns">Contact</button>
+      <button class="nav-btns" type="button">Home</button>
+      <button class="nav-btns" type="button">Menu</button>
+      <button class="nav-btns" type="button">Contact</button>
     </nav>
   </header>
-  <div id="content"></div>
+  <main id="content">
+    <div class="home-container">
+      <section class="hero-section">
+        <div class="hero-image"></div>
+        <div class="hero-content">
+          <h2>Welcome to Comfy Cafe</h2>
+        </div>
+      </section>
+    </div>
+  </main>
   <footer>
     <div class="footer-content">
       <p>Copyright &copy; <a href="https://github.com/ComfyClicks">ComfyClicks</a> 2024</p>

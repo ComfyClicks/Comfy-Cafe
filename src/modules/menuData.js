@@ -8,6 +8,7 @@ const food = [
     description: "Buttery, flaky croissant with a golden exterior and soft, airy interior.",
     ingredients: ["Flour", "Butter", "Yeast", "Sugar", "Salt", "Milk"],
     image: require("../assets/food/croissant.webp"),
+    imageMedium: require("../assets/food/croissant-640.webp"),
     imageThumbnail: require("../assets/food/croissant-thumb.webp")
   },
   {
@@ -58,6 +59,7 @@ const food = [
     description: "Flaky pastry filled with sweet apple and cinnamon, dusted with powdered sugar.",
     ingredients: ["Filo Pastry", "Apples", "Cinnamon", "Sugar", "Butter", "Raisins", "Powdered Sugar", "Lemon Zest"],
     image: require("../assets/food/strudel.webp"),
+    imageMedium: require("../assets/food/strudel-640.webp"),
     imageThumbnail: require("../assets/food/strudel-thumb.webp")
   },
   {
@@ -78,6 +80,7 @@ const food = [
     description: "Swirled pastry with cinnamon sugar filling and cream cheese frosting.",
     ingredients: ["Flour", "Butter", "Sugar", "Cinnamon", "Yeast", "Cream Cheese", "Vanilla Extract", "Salt"],
     image: require("../assets/food/cinnamon-roll.webp"),
+    imageMedium: require("../assets/food/cinnamon-roll-640.webp"),
     imageThumbnail: require("../assets/food/cinnamon-roll-thumb.webp")
   },
   
@@ -223,6 +226,7 @@ const beverage = [
     description: "Our signature medium roast coffee with notes of chocolate and caramel.",
     ingredients: ["Arabica Coffee Beans", "Filtered Water"],
     image: require("../assets/beverage/house-coffee.webp"),
+    imageMedium: require("../assets/beverage/house-coffee-640.webp"),
     imageThumbnail: require("../assets/beverage/house-coffee-thumb.webp")
   },
   {
@@ -283,6 +287,7 @@ const beverage = [
     description: "Ristretto shots of espresso with steamed milk and vanilla syrup, resulting in a velvety texture.",
     ingredients: ["Ristretto Espresso", "Steamed Milk", "Vanilla Syrup"],
     image: require("../assets/beverage/vanilla-flat-white.webp"),
+    imageMedium: require("../assets/beverage/vanilla-flat-white-640.webp"),
     imageThumbnail: require("../assets/beverage/vanilla-flat-white-thumb.webp")
   },
   {
@@ -313,6 +318,7 @@ const beverage = [
     description: "Rich and creamy hot chocolate topped with fluffy marshmallows and a sprinkle of cinnamon. Made with premium cocoa for a deeply satisfying chocolate experience.",
     ingredients: ["Whole Milk", "Premium Cocoa Powder", "Dark Chocolate", "Vanilla Extract", "Marshmallows", "Ground Cinnamon", "Whipped Cream"],
     image: require("../assets/beverage/hot-chocolate.webp"),
+    imageMedium: require("../assets/beverage/hot-chocolate-640.webp"),
     imageThumbnail: require("../assets/beverage/hot-chocolate-thumb.webp")
   },
   {

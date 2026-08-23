@@ -95,9 +95,11 @@ function homePage() {
     menuItem.dataset.itemId = itemId;
     
     menuItem.innerHTML = `
-      <img src="${item.image}" 
-           srcset="${item.imageThumbnail} 512w, ${item.image} 1024w"
-           sizes="(max-width: 768px) 90vw, 400px"
+      <img src="${item.imageMedium}"
+           srcset="${item.imageThumbnail} 512w, ${item.imageMedium} 640w"
+           sizes="(max-width: 768px) calc(100vw - 4rem), (max-width: 1056px) calc((100vw - 18rem) / 2), 300px"
+           width="640"
+           height="640"
            alt="${item.name}" 
            class="featured-item-image"
            loading="lazy">
@@ -117,6 +119,7 @@ function homePage() {
   });
   
   const viewMenuButton = createElement('button', 'view-menu-btn', 'View Full Menu');
+  viewMenuButton.type = 'button';
   
   menuSection.appendChild(menuHeading);
   menuSection.appendChild(menuGrid);
@@ -161,6 +164,7 @@ function homePage() {
   const locationText = createElement('p', null, '123 Comfy Street');
   const locationTextCity = createElement('p', null, 'Paris, France 75008');
   const contactButton = createElement('button', 'contact-btn', 'Contact Us');
+  contactButton.type = 'button';
   
   locationDiv.appendChild(locationHeading);
   locationDiv.appendChild(locationText);

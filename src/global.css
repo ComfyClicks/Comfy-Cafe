@@ -5,8 +5,9 @@
   --body-text: #333;
   --body-bg: #f8f8f8;
   --price-color: #2e7d32;
-  --accent-color: #FF6F61;
-  --accent-hover: #E85A4F;
+  --accent-color: #B44338;
+  --accent-hover: #96342C;
+  --accent-on-dark: #FF8277;
 }
 
 * {
@@ -231,6 +232,7 @@ nav {
 #content {
   max-width: 1200px;
   width: 100%;
+  min-height: calc(100vh - 104px);
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -261,13 +263,13 @@ footer p {
 }
 
 footer a {
-  color: var(--accent-color);
+  color: var(--accent-on-dark);
   text-decoration: none;
   transition: color 0.3s ease, transform 0.3s ease;
   display: inline-block;
 }
 
 footer a:hover {
-  color: var(--accent-hover);
+  color: #FFAAA2;
   transform: translateY(-2px);
 }
